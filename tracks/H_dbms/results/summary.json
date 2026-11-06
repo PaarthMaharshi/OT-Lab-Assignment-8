@@ -1,0 +1,473 @@
+{
+ "dataset": {
+  "customer": 60000,
+  "orders": 600000,
+  "lineitem": 2400000,
+  "part": 60000,
+  "supplier": 500
+ },
+ "dbms": "SQLite 3.50.4",
+ "workload_queries": 8,
+ "baseline": {
+  "latency_s": {
+   "Q1_ship_range": 0.1489621000000625,
+   "Q2_nation_orders": 0.043949500000053376,
+   "Q3_orders_lines": 0.18840670000008686,
+   "Q4_part_lines": 0.16354210000008607,
+   "Q5_four_way": 0.215032500000234,
+   "Q6_group_supplier": 0.5697129999998651,
+   "Q7_status_date": 0.032280899999932444,
+   "Q8_supplier_nation": 0.17055870000058349
+  },
+  "weighted_total_s": 1.5324455000009038,
+  "db_mb": 98.476032,
+  "plans": {
+   "Q1_ship_range": [
+    "SCAN lineitem"
+   ],
+   "Q2_nation_orders": [
+    "SCAN orders",
+    "LIST SUBQUERY 1",
+    "SCAN customer",
+    "CREATE BLOOM FILTER"
+   ],
+   "Q3_orders_lines": [
+    "SCAN lineitem",
+    "BLOOM FILTER ON orders (o_id=?)",
+    "SEARCH orders USING INTEGER PRIMARY KEY (rowid=?)"
+   ],
+   "Q4_part_lines": [
+    "SCAN lineitem",
+    "BLOOM FILTER ON part (p_id=?)",
+    "SEARCH part USING INTEGER PRIMARY KEY (rowid=?)"
+   ],
+   "Q5_four_way": [
+    "SCAN lineitem",
+    "BLOOM FILTER ON orders (o_id=?)",
+    "BLOOM FILTER ON part (p_id=?)",
+    "SEARCH orders USING INTEGER PRIMARY KEY (rowid=?)",
+    "BLOOM FILTER ON customer (c_id=?)",
+    "SEARCH customer USING INTEGER PRIMARY KEY (rowid=?)",
+    "SEARCH part USING INTEGER PRIMARY KEY (rowid=?)"
+   ],
+   "Q6_group_supplier": [
+    "SCAN lineitem",
+    "USE TEMP B-TREE FOR GROUP BY"
+   ],
+   "Q7_status_date": [
+    "SCAN orders"
+   ],
+   "Q8_supplier_nation": [
+    "SCAN lineitem",
+    "BLOOM FILTER ON supplier (s_id=?)",
+    "SEARCH supplier USING INTEGER PRIMARY KEY (rowid=?)"
+   ]
+  }
+ },
+ "candidates": {
+  "li_ship": {
+   "definition": "lineitem(l_ship)",
+   "size_mb": 26.370048,
+   "build_and_analyze_s": 4.760864599999877,
+   "saving_s": 0.13162529999863182,
+   "weighted_total_after_s": 1.4021132000016223
+  },
+  "li_flag_ship": {
+   "definition": "lineitem(l_flag,l_ship)",
+   "size_mb": 29.986816,
+   "build_and_analyze_s": 5.327120900000409,
+   "saving_s": 0.1471863000006124,
+   "weighted_total_after_s": 1.8554820000008476
+  },
+  "li_order": {
+   "definition": "lineitem(l_order)",
+   "size_mb": 28.762112,
+   "build_and_analyze_s": 4.619312300000274,
+   "saving_s": 0.3085047000004124,
+   "weighted_total_after_s": 1.2278004000008877
+  },
+  "li_part": {
+   "definition": "lineitem(l_part)",
+   "size_mb": 27.570176,
+   "build_and_analyze_s": 4.794347699999889,
+   "saving_s": 0.35978680000062013,
+   "weighted_total_after_s": 1.1756484999987151
+  },
+  "li_supp": {
+   "definition": "lineitem(l_supp)",
+   "size_mb": 25.878528,
+   "build_and_analyze_s": 4.633009799999854,
+   "saving_s": 0.06360310000036407,
+   "weighted_total_after_s": 3.006918300000507
+  },
+  "li_flag_supp_qty": {
+   "definition": "lineitem(l_flag,l_supp,l_qty)",
+   "size_mb": 34.271232,
+   "build_and_analyze_s": 6.04112030000033,
+   "saving_s": 0.6823166000003766,
+   "weighted_total_after_s": 1.3524512999983926
+  },
+  "li_order_price": {
+   "definition": "lineitem(l_order,l_price)",
+   "size_mb": 50.5856,
+   "build_and_analyze_s": 5.006450199999563,
+   "saving_s": 0.3488223000003927,
+   "weighted_total_after_s": 1.1838632000008147
+  },
+  "o_cust": {
+   "definition": "orders(o_cust)",
+   "size_mb": 6.877184,
+   "build_and_analyze_s": 2.092015999999603,
+   "saving_s": 0.09903260000101,
+   "weighted_total_after_s": 1.4356651999996757
+  },
+  "o_date": {
+   "definition": "orders(o_date)",
+   "size_mb": 6.569984,
+   "build_and_analyze_s": 2.432495000000017,
+   "saving_s": 0.027038400000492402,
+   "weighted_total_after_s": 1.5153050999988409
+  },
+  "o_status_date": {
+   "definition": "orders(o_status,o_date)",
+   "size_mb": 7.376896,
+   "build_and_analyze_s": 2.3818037000000913,
+   "saving_s": 0.08096299999942858,
+   "weighted_total_after_s": 1.4535409000009167
+  },
+  "o_date_total": {
+   "definition": "orders(o_date,o_total)",
+   "size_mb": 12.005376,
+   "build_and_analyze_s": 2.462456700000075,
+   "saving_s": 0.01578840000092896,
+   "weighted_total_after_s": 1.5267172999992908
+  },
+  "c_nation_seg": {
+   "definition": "customer(c_nation,c_segment)",
+   "size_mb": 0.663552,
+   "build_and_analyze_s": 1.7166206000001694,
+   "saving_s": 0.04377130000102625,
+   "weighted_total_after_s": 1.5118551999985357
+  },
+  "c_nation": {
+   "definition": "customer(c_nation)",
+   "size_mb": 0.569344,
+   "build_and_analyze_s": 1.8297207000005073,
+   "saving_s": 0.03736479999861331,
+   "weighted_total_after_s": 1.5095070000015767
+  },
+  "p_type": {
+   "definition": "part(p_type)",
+   "size_mb": 0.581632,
+   "build_and_analyze_s": 2.474082200000339,
+   "saving_s": 0.0,
+   "weighted_total_after_s": 1.5995177999993757
+  },
+  "s_nation": {
+   "definition": "supplier(s_nation)",
+   "size_mb": 0.012288,
+   "build_and_analyze_s": 1.7545653000006496,
+   "saving_s": 0.02383680000093591,
+   "weighted_total_after_s": 1.5119378999997934
+  }
+ },
+ "total_candidate_size_mb": 258.080768,
+ "index_selection": {
+  "budget=15% of all candidates": {
+   "budget_mb": 38.71211519999999,
+   "greedy (benefit/size, additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation_seg",
+     "c_nation",
+     "li_flag_supp_qty"
+    ],
+    "storage_mb": 35.516416,
+    "weighted_total_s": 1.3570060000010926,
+    "actual_saving_s": 0.17543949999981123,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 0.7872895000009521,
+    "best-index-per-query_model_predicted_s": 0.691716100001031
+   },
+   "DP knapsack (additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation",
+     "c_nation_seg",
+     "li_flag_supp_qty"
+    ],
+    "storage_mb": 35.516416,
+    "weighted_total_s": 1.359695200000715,
+    "actual_saving_s": 0.17275030000018887,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 0.7872895000009521,
+    "best-index-per-query_model_predicted_s": 0.691716100001031
+   },
+   "ILP (best index per query)": {
+    "indexes": [
+     "li_flag_supp_qty",
+     "c_nation_seg",
+     "c_nation",
+     "s_nation"
+    ],
+    "storage_mb": 35.516416,
+    "weighted_total_s": 1.3773777999986123,
+    "actual_saving_s": 0.15506770000229153,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 0.7872895000009521,
+    "best-index-per-query_model_predicted_s": 0.691716100001031
+   }
+  },
+  "budget=30% of all candidates": {
+   "budget_mb": 77.42423039999998,
+   "greedy (benefit/size, additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation_seg",
+     "c_nation",
+     "li_flag_supp_qty",
+     "o_cust",
+     "li_part",
+     "o_status_date"
+    ],
+    "storage_mb": 77.340672,
+    "weighted_total_s": 17.396116100001564,
+    "actual_saving_s": -15.86367060000066,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.3270719000020108,
+    "best-index-per-query_model_predicted_s": 1.0794661000009
+   },
+   "DP knapsack (additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation_seg",
+     "o_status_date",
+     "o_cust",
+     "li_flag_supp_qty",
+     "li_part"
+    ],
+    "storage_mb": 76.771328,
+    "weighted_total_s": 17.346626399998968,
+    "actual_saving_s": -15.814180899998064,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.2897071000033975,
+    "best-index-per-query_model_predicted_s": 1.0794661000009
+   },
+   "ILP (best index per query)": {
+    "indexes": [
+     "li_part",
+     "li_flag_supp_qty",
+     "o_cust",
+     "o_status_date"
+    ],
+    "storage_mb": 76.095488,
+    "weighted_total_s": 0.9685632999999143,
+    "actual_saving_s": 0.5638822000009895,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.2220990000014353,
+    "best-index-per-query_model_predicted_s": 1.0794661000009
+   }
+  },
+  "budget=60% of all candidates": {
+   "budget_mb": 154.84846079999997,
+   "greedy (benefit/size, additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation_seg",
+     "c_nation",
+     "li_flag_supp_qty",
+     "o_cust",
+     "li_part",
+     "o_status_date",
+     "li_order",
+     "li_ship",
+     "o_date",
+     "o_date_total"
+    ],
+    "storage_mb": 151.048192,
+    "weighted_total_s": 0.19876550000026327,
+    "actual_saving_s": 1.3336800000006406,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.8100287000024764,
+    "best-index-per-query_model_predicted_s": 1.293910300000789
+   },
+   "DP knapsack (additive model)": {
+    "indexes": [
+     "s_nation",
+     "c_nation",
+     "c_nation_seg",
+     "o_cust",
+     "li_order_price",
+     "li_flag_supp_qty",
+     "li_part",
+     "li_order"
+    ],
+    "storage_mb": 149.311488,
+    "weighted_total_s": 0.8265820999986317,
+    "actual_saving_s": 0.7058634000022721,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.9034359000033874,
+    "best-index-per-query_model_predicted_s": 1.1974374999999782
+   },
+   "ILP (best index per query)": {
+    "indexes": [
+     "li_flag_ship",
+     "li_order",
+     "li_part",
+     "li_flag_supp_qty",
+     "o_cust",
+     "o_date",
+     "o_status_date",
+     "o_date_total"
+    ],
+    "storage_mb": 153.419776,
+    "weighted_total_s": 0.17039500000009866,
+    "actual_saving_s": 1.3620505000008052,
+    "queries_timed_out_30s": [],
+    "additive_model_predicted_s": 1.7206168000038815,
+    "best-index-per-query_model_predicted_s": 1.3366576000007626
+   }
+  },
+  "all 15 candidate indexes": {
+   "queries_timed_out_30s": [],
+   "storage_mb": 258.080768,
+   "weighted_total_s": 0.13375499999892781,
+   "actual_saving_s": 1.398690500001976
+  }
+ },
+ "plans_with_all_indexes": {
+  "Q3_orders_lines": [
+   "SEARCH orders USING COVERING INDEX ix_o_date (o_date>? AND o_date<?)",
+   "SEARCH lineitem USING COVERING INDEX ix_li_order_price (l_order=?)"
+  ],
+  "Q5_four_way": [
+   "SEARCH part USING COVERING INDEX ix_p_type (p_type=?)",
+   "SEARCH lineitem USING INDEX ix_li_part (l_part=?)",
+   "SEARCH orders USING INTEGER PRIMARY KEY (rowid=?)",
+   "SEARCH customer USING COVERING INDEX ix_c_nation_seg (c_nation=? AND c_segment=? AND rowid=?)"
+  ]
+ },
+ "join_order": {
+  "filtered_cardinalities": {
+   "customer": 466,
+   "orders": 200253,
+   "lineitem": 2400000,
+   "part": 409
+  },
+  "sqlite_default_planner_s": 0.03718829999979789,
+  "best_measured_order": "customer->orders->lineitem->part",
+  "best_measured_s": 0.04132310000022699,
+  "worst_completed_s": 15.604954800000087,
+  "orders_timed_out_20s": [
+   "customer->lineitem->orders->part",
+   "customer->lineitem->part->orders",
+   "orders->part->lineitem->customer",
+   "lineitem->customer->orders->part",
+   "lineitem->customer->part->orders",
+   "part->orders->customer->lineitem",
+   "part->orders->lineitem->customer"
+  ],
+  "dp_order": "customer->orders->lineitem->part",
+  "dp_order_s": 0.04132310000022699,
+  "greedy_order": "part->lineitem->orders->customer",
+  "greedy_order_s": 0.04938670000046841,
+  "all_orders": {
+   "customer->orders->lineitem->part": {
+    "seconds": 0.04132310000022699,
+    "estimated_C_out": 8284.899300313333
+   },
+   "customer->orders->part->lineitem": {
+    "seconds": 0.8324651999992057,
+    "estimated_C_out": 638180.7108003134
+   },
+   "customer->lineitem->orders->part": {
+    "seconds": null,
+    "estimated_C_out": 1118406729.6010003
+   },
+   "customer->lineitem->part->orders": {
+    "seconds": null,
+    "estimated_C_out": 1126024268.4078002
+   },
+   "customer->part->orders->lineitem": {
+    "seconds": 2.084703999999874,
+    "estimated_C_out": 827219.4125003134
+   },
+   "customer->part->lineitem->orders": {
+    "seconds": 15.604954800000087,
+    "estimated_C_out": 7814862.407800313
+   },
+   "orders->customer->lineitem->part": {
+    "seconds": 0.2597704999998314,
+    "estimated_C_out": 208071.89930031332
+   },
+   "orders->customer->part->lineitem": {
+    "seconds": 1.6823246000003564,
+    "estimated_C_out": 837967.7108003134
+   },
+   "orders->lineitem->customer->part": {
+    "seconds": 0.8535828000003676,
+    "estimated_C_out": 1007528.6010003133
+   },
+   "orders->lineitem->part->customer": {
+    "seconds": 1.7001499999996668,
+    "estimated_C_out": 1006767.6396003134
+   },
+   "orders->part->customer->lineitem": {
+    "seconds": 12.368452600000637,
+    "estimated_C_out": 82739889.4125003
+   },
+   "orders->part->lineitem->customer": {
+    "seconds": null,
+    "estimated_C_out": 82109232.6396003
+   },
+   "lineitem->customer->orders->part": {
+    "seconds": null,
+    "estimated_C_out": 1120806263.6010003
+   },
+   "lineitem->customer->part->orders": {
+    "seconds": null,
+    "estimated_C_out": 1128423802.4078002
+   },
+   "lineitem->orders->customer->part": {
+    "seconds": 1.6640263999997842,
+    "estimated_C_out": 3207275.601000313
+   },
+   "lineitem->orders->part->customer": {
+    "seconds": 1.7433754000003319,
+    "estimated_C_out": 3206514.6396003133
+   },
+   "lineitem->part->customer->orders": {
+    "seconds": 1.5939706999997725,
+    "estimated_C_out": 10040162.407800313
+   },
+   "lineitem->part->orders->customer": {
+    "seconds": 0.3639725000002727,
+    "estimated_C_out": 2421862.6396003133
+   },
+   "part->customer->orders->lineitem": {
+    "seconds": 7.646140099999684,
+    "estimated_C_out": 827162.4125003134
+   },
+   "part->customer->lineitem->orders": {
+    "seconds": 3.045046799999909,
+    "estimated_C_out": 7814805.407800313
+   },
+   "part->orders->customer->lineitem": {
+    "seconds": null,
+    "estimated_C_out": 82540045.4125003
+   },
+   "part->orders->lineitem->customer": {
+    "seconds": null,
+    "estimated_C_out": 81909388.6396003
+   },
+   "part->lineitem->customer->orders": {
+    "seconds": 0.7005700999998226,
+    "estimated_C_out": 7640571.407800313
+   },
+   "part->lineitem->orders->customer": {
+    "seconds": 0.04938670000046841,
+    "estimated_C_out": 22271.639600313334
+   }
+  }
+ }
+}

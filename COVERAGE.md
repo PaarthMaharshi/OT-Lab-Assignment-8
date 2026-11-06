@@ -100,3 +100,10 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 |---|---|---|---|
 | Pass ordering | greedy vs exhaustive (24 orders) | tracks/F_compiler | greedy optimal in 3/6, 10 vs 96 pass runs |
 | Register allocation | greedy colouring vs ILP | tracks/F_compiler | greedy = exact on all graphs |
+
+## Track H (DBMS) - decisions solved with Chapter 6 methods
+
+| Decision | Methods | Where | Result |
+|---|---|---|---|
+| Index selection under a storage budget | greedy, DP knapsack, interaction-aware ILP | tracks/H_dbms | ILP best or tied at 3 budgets; additive methods caused an 11x regression at 30% |
+| Join order | DP over subsets, greedy vs all 24 measured orders vs SQLite | tracks/H_dbms | DP = measured best (0.041 s); worst 15.6 s |
