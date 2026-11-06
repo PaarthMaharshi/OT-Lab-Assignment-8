@@ -1,0 +1,14 @@
+numpy
+scipy
+matplotlib
+scikit-learn
+networkx
+ortools
+pulp
+pytest
+# Quantum (Tracks C, I)
+qiskit
+qiskit-aer
+pennylane
+# Optional: torch for backprop/QML comparison
+# torch
