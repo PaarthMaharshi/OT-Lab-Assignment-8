@@ -15,7 +15,7 @@ Main case study (Track E): **Tower-defense placement optimization**.
 | F | Compiler optimization | `tracks/F_compiler` | WIP |
 | G | xv6 OS optimization | `tracks/G_xv6` | TODO |
 | H | DBMS optimization | `tracks/H_dbms` | WIP |
-| I | Quantum algorithms and QML vs classical | `tracks/I_quantum_algorithms_qml` | TODO |
+| I | Quantum algorithms and QML vs classical | `tracks/I_quantum_algorithms_qml` | WIP |
 | J | Software-engineering optimization | `tracks/J_software_engineering` | TODO |
 
 Chapter 6 coverage: see [COVERAGE.md](COVERAGE.md).

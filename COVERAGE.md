@@ -51,21 +51,21 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 | Topic | Source | Track | Code | Result | Status |
 |---|---|---|---|---|---|
 | Qubit, Born rule, shots (finite-shot cost) | PPT3 s5-7 | qsim.sample_mean; exp_shots | std = sqrt(var/S); >=1000 shots ~ exact | WIP |
-| Gates, Hadamard interference, CNOT, Bell state | PPT3 s10-17 | I (write circuits by hand) | | | TODO |
-| Deutsch-Jozsa / Deutsch | PPT3 s13 | I | | | TODO |
-| Bernstein-Vazirani | PDF | I | | | TODO |
-| Grover search (vs classical, query counts) | PPT3 s14 | I | | | TODO |
-| Quantum Fourier Transform, Phase Estimation, Shor | PDF | I | | | TODO |
-| Quantum annealing and QUBO embedding limits | PDF | exp_embedding | K_65 does not fit Chimera C16; chain-strength trade-off | WIP |
+| Gates, Hadamard interference, CNOT, Bell state | PPT3 s10-17 | tracks/I_quantum_algorithms_qml/tests (Bell, HH, CNOT in Track C) | tests pass | WIP |
+| Deutsch-Jozsa / Deutsch | PPT3 s13 | qalgs.deutsch_jozsa; Track I | 20/20, 1 query vs 513 | WIP |
+| Bernstein-Vazirani | PDF | qalgs.bernstein_vazirani | exact, 1 query vs n | WIP |
+| Grover search (vs classical, query counts) | PPT3 s14 | qalgs.grover; exp_algorithms | queries 100 vs 8192 expected (N=16384); sim slower in wall time | WIP |
+| Quantum Fourier Transform, Phase Estimation, Shor | PDF | qalgs.qft/qpe/shor_order_finding | QFT = DFT; Shor N=15 45-58% per attempt (permutation oracle) | WIP |
+| Quantum annealing and QUBO embedding limits | PDF | Track C exp_embedding + qalgs.anneal | chain strength trade-off; P(opt)=0.91 at T=30 | WIP |
 | NISQ, variational loop (VQA) | PPT3 s19-20 | qopt.py; exp_vqe | SIMULATED | WIP |
 | VQE | PPT3 s22, 24, 29 | exp_vqe; test slide22/24/28 | error 1e-11 at 16 params; slide QUBO -4.000 | WIP |
 | QAOA on Max-Cut (solves the Track B QUBO) | PPT3 s27-30 | exp_qaoa; test slide30 | ratio 0.83/0.88/0.91 (p=1/2/3) | WIP |
 | Parameterized circuits / QNN / variational classifier | PPT3 s18, 25 | hea_ops; test slide25 | slide QNN only; classifier in Track I | WIP |
 | Parameter-shift rule | PPT3 s24 | qsim.param_shift_grad | = finite diff 1e-7 | WIP |
 | SPSA, quantum natural gradient | PDF | qopt.spsa / qng; exp_vqe | SPSA 5/5; QNG fewest iterations, most circuits | WIP |
-| Quantum kernels | PDF | I | | | TODO |
+| Quantum kernels | PDF | qml.kernel_matrix | moons 0.835, circles 0.949 | WIP |
 | Barren plateaus, noise | PPT3 s32 | exp_barren, exp_noise | slope -0.68; noise erases p=3 gain at 3% | WIP |
-| QML vs classical comparison | PPT3 s33 | I | | | TODO |
+| QML vs classical comparison | PPT3 s33 | exp_qml | classical RBF SVM / MLP win | WIP |
 
 ## PPT 4 - Strategy selection
 

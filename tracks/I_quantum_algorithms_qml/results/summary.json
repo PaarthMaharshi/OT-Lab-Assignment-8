@@ -1,0 +1,371 @@
+{
+ "algorithms": {
+  "deutsch_jozsa": {
+   "n=2": {
+    "correct_of_20": 20,
+    "quantum_queries": 1,
+    "classical_worst_case_queries": 3
+   },
+   "n=4": {
+    "correct_of_20": 20,
+    "quantum_queries": 1,
+    "classical_worst_case_queries": 9
+   },
+   "n=6": {
+    "correct_of_20": 20,
+    "quantum_queries": 1,
+    "classical_worst_case_queries": 33
+   },
+   "n=8": {
+    "correct_of_20": 20,
+    "quantum_queries": 1,
+    "classical_worst_case_queries": 129
+   },
+   "n=10": {
+    "correct_of_20": 20,
+    "quantum_queries": 1,
+    "classical_worst_case_queries": 513
+   }
+  },
+  "bernstein_vazirani": {
+   "n=2": {
+    "recovered": true,
+    "probability": 0.9999999999999992,
+    "quantum_queries": 1,
+    "classical_queries": 2,
+    "simulation_seconds": 0.00020620000032067765
+   },
+   "n=4": {
+    "recovered": true,
+    "probability": 0.9999999999999986,
+    "quantum_queries": 1,
+    "classical_queries": 4,
+    "simulation_seconds": 0.00023129999863158446
+   },
+   "n=8": {
+    "recovered": true,
+    "probability": 0.9999999999999973,
+    "quantum_queries": 1,
+    "classical_queries": 8,
+    "simulation_seconds": 0.0004802000003110152
+   },
+   "n=12": {
+    "recovered": true,
+    "probability": 0.999999999999996,
+    "quantum_queries": 1,
+    "classical_queries": 12,
+    "simulation_seconds": 0.0022023999990778975
+   }
+  },
+  "grover": {
+   "n=2 (N=4)": {
+    "success_probability": 0.9999999999999991,
+    "oracle_queries_quantum": 1,
+    "classical_expected_queries": 2.5,
+    "classical_worst_queries": 4,
+    "query_ratio_classical_expected/quantum": 2.5,
+    "simulation_seconds": 0.00012199999946460593,
+    "classical_python_linear_search_seconds": 3.9000005926936865e-06
+   },
+   "n=4 (N=16)": {
+    "success_probability": 0.9613189697265575,
+    "oracle_queries_quantum": 3,
+    "classical_expected_queries": 8.5,
+    "classical_worst_queries": 16,
+    "query_ratio_classical_expected/quantum": 2.8333333333333335,
+    "simulation_seconds": 0.0003519000001688255,
+    "classical_python_linear_search_seconds": 2.200000380980782e-06
+   },
+   "n=6 (N=64)": {
+    "success_probability": 0.996585680786786,
+    "oracle_queries_quantum": 6,
+    "classical_expected_queries": 32.5,
+    "classical_worst_queries": 64,
+    "query_ratio_classical_expected/quantum": 5.416666666666667,
+    "simulation_seconds": 0.0010211999997409293,
+    "classical_python_linear_search_seconds": 1.8000009731622413e-06
+   },
+   "n=8 (N=256)": {
+    "success_probability": 0.9999470421032398,
+    "oracle_queries_quantum": 12,
+    "classical_expected_queries": 128.5,
+    "classical_worst_queries": 256,
+    "query_ratio_classical_expected/quantum": 10.708333333333334,
+    "simulation_seconds": 0.0028882000005978625,
+    "classical_python_linear_search_seconds": 8.799999704933725e-06
+   },
+   "n=10 (N=1024)": {
+    "success_probability": 0.999461244744318,
+    "oracle_queries_quantum": 25,
+    "classical_expected_queries": 512.5,
+    "classical_worst_queries": 1024,
+    "query_ratio_classical_expected/quantum": 20.5,
+    "simulation_seconds": 0.00900540000111505,
+    "classical_python_linear_search_seconds": 4.140000055485871e-05
+   },
+   "n=12 (N=4096)": {
+    "success_probability": 0.9999453461089012,
+    "oracle_queries_quantum": 50,
+    "classical_expected_queries": 2048.5,
+    "classical_worst_queries": 4096,
+    "query_ratio_classical_expected/quantum": 40.97,
+    "simulation_seconds": 0.04027190000124392,
+    "classical_python_linear_search_seconds": 0.000180200000613695
+   },
+   "n=14 (N=16384)": {
+    "success_probability": 0.9999997811137364,
+    "oracle_queries_quantum": 100,
+    "classical_expected_queries": 8192.5,
+    "classical_worst_queries": 16384,
+    "query_ratio_classical_expected/quantum": 81.925,
+    "simulation_seconds": 0.25546229999963543,
+    "classical_python_linear_search_seconds": 0.000756800000090152
+   }
+  },
+  "grover_overrotation_n6": {
+   "iterations_0_to_20": [
+    0.015624999999999986,
+    0.13482666015624958,
+    0.3438951969146712,
+    0.5913801500573715,
+    0.8163770193968886,
+    0.9635154816192011,
+    0.9965856807867862,
+    0.907449247573247,
+    0.7180421010897274,
+    0.4749761562911567,
+    0.23806842303030787,
+    0.06562041378934245,
+    7.050584240359145e-05,
+    0.057550121848307496,
+    0.2239138875556005,
+    0.45822071999725267,
+    0.7028091721270758,
+    0.8974875545537464,
+    0.9943467341019506,
+    0.969550272054748,
+    0.8292004227440674
+   ],
+   "optimal_k": 6,
+   "peak_at": 6
+  },
+  "qft": {
+   "t=2": {
+    "max_abs_difference_to_DFT_matrix": 2.6891698152134724e-16,
+    "gates": 4
+   },
+   "t=4": {
+    "max_abs_difference_to_DFT_matrix": 3.7830966782820685e-15,
+    "gates": 12
+   },
+   "t=6": {
+    "max_abs_difference_to_DFT_matrix": 7.997808967333558e-15,
+    "gates": 24
+   },
+   "t=8": {
+    "max_abs_difference_to_DFT_matrix": 1.7123846183432683e-14,
+    "gates": 40
+   }
+  },
+  "qpe": {
+   "phi=1/8, t=3": {
+    "P(exact estimate)": 0.9999999999999991
+   },
+   "phi=0.3, t=6": {
+    "best_estimate": 0.296875,
+    "P(best)": 0.8751683167958484,
+    "textbook_lower_bound_4/pi^2": 0.4052847345693511
+   }
+  },
+  "shor_N15": {
+   "results": {
+    "a=2": {
+     "true_order": 4,
+     "shots_with_correct_order": "112/200",
+     "shots_giving_a_nontrivial_factor": "112/200"
+    },
+    "a=4": {
+     "true_order": 2,
+     "shots_with_correct_order": "90/200",
+     "shots_giving_a_nontrivial_factor": "90/200"
+    },
+    "a=7": {
+     "true_order": 4,
+     "shots_with_correct_order": "107/200",
+     "shots_giving_a_nontrivial_factor": "107/200"
+    },
+    "a=8": {
+     "true_order": 4,
+     "shots_with_correct_order": "116/200",
+     "shots_giving_a_nontrivial_factor": "116/200"
+    },
+    "a=11": {
+     "true_order": 2,
+     "shots_with_correct_order": "100/200",
+     "shots_giving_a_nontrivial_factor": "100/200"
+    },
+    "a=13": {
+     "true_order": 4,
+     "shots_with_correct_order": "105/200",
+     "shots_giving_a_nontrivial_factor": "105/200"
+    }
+   },
+   "note": "strict decoding (no multiples of r are tried); about half the shots are uninformative by design (m=0 or half-period), which is why the success rate is near 1/2 and the algorithm is repeated. Modular exponentiation applied as exact permutations (not gate-decomposed); N=15 is trivial classically; no advantage is claimed or measurable at this size"
+  },
+  "quantum_annealing_simulated_n8": {
+   "note": "closed-system adiabatic evolution, linear schedule; not a real annealer (no noise, no embedding)",
+   "T=0.5": {
+    "P(optimal cut)": 0.0109833419914367,
+    "min_gap_along_schedule": 0.43083424717370455
+   },
+   "T=2": {
+    "P(optimal cut)": 0.06722743342568757,
+    "min_gap_along_schedule": 0.43083424717370455
+   },
+   "T=8": {
+    "P(optimal cut)": 0.3393466508734448,
+    "min_gap_along_schedule": 0.43063530118037363
+   },
+   "T=30": {
+    "P(optimal cut)": 0.9129351241999458,
+    "min_gap_along_schedule": 0.4320910498879673
+   },
+   "T=100": {
+    "P(optimal cut)": 0.9998348739663228,
+    "min_gap_along_schedule": 0.4319320011265688
+   }
+  }
+ },
+ "noise_bernstein_vazirani": {
+  "model": "single-qubit depolarizing noise after each gate on each touched qubit (simulated, not hardware)",
+  "success_probability": {
+   "n=2 (8 gates, 2 two-qubit)": {
+    "0.0": 0.9999999999999992,
+    "0.001": 0.9940204059693519,
+    "0.005": 0.9705063233647837,
+    "0.01": 0.9420063575552509,
+    "0.03": 0.8373944913510393
+   },
+   "n=3 (11 gates, 3 two-qubit)": {
+    "0.0": 0.9999999999999989,
+    "0.001": 0.991373656272108,
+    "0.005": 0.9576627244254439,
+    "0.01": 0.9172586782469826,
+    "0.03": 0.773321532241759
+   },
+   "n=4 (14 gates, 4 two-qubit)": {
+    "0.0": 0.9999999999999986,
+    "0.001": 0.9887339566238575,
+    "0.005": 0.9449894041655601,
+    "0.01": 0.8931634196956405,
+    "0.03": 0.714194918349525
+   },
+   "n=5 (17 gates, 5 two-qubit)": {
+    "0.0": 0.9999999999999982,
+    "0.001": 0.986101285626592,
+    "0.005": 0.9324838005333005,
+    "0.01": 0.869701158449357,
+    "0.03": 0.6595914810369642
+   },
+   "n=6 (20 gates, 6 two-qubit)": {
+    "0.0": 0.9999999999999979,
+    "0.001": 0.983475624560101,
+    "0.005": 0.9201436909796056,
+    "0.01": 0.8468552216842952,
+    "0.03": 0.609162863580192
+   }
+  },
+  "classical_one_query_per_bit_needs_n_queries_noise_free": true
+ },
+ "qml_vs_classical": {
+  "note": "300 points, 50/50 split, 5 seeds, 2 features; quantum models simulated on 2 qubits",
+  "moons": {
+   "variational classifier (3 layers)": {
+    "test_acc_mean": 0.92,
+    "test_acc_std": 0.023094010767585,
+    "train_seconds": 0.7444849599996815,
+    "circuit_evaluations": 225000,
+    "parameters": 12
+   },
+   "quantum kernel + SVM": {
+    "test_acc_mean": 0.8346666666666667,
+    "test_acc_std": 0.014236104336041758,
+    "train_seconds": 0.03273752000022796,
+    "circuit_evaluations": 11325,
+    "parameters": 62.2
+   },
+   "logistic regression": {
+    "test_acc_mean": 0.8506666666666667,
+    "test_acc_std": 0.031721006008987536,
+    "train_seconds": 0.0036718999999720836,
+    "circuit_evaluations": 0,
+    "parameters": 3
+   },
+   "RBF SVM": {
+    "test_acc_mean": 0.9453333333333334,
+    "test_acc_std": 0.015434449203720304,
+    "train_seconds": 0.0011568800000532065,
+    "circuit_evaluations": 0,
+    "parameters": 78.6
+   },
+   "MLP (8 hidden)": {
+    "test_acc_mean": 0.8373333333333334,
+    "test_acc_std": 0.016110727964792754,
+    "train_seconds": 0.19719128000033379,
+    "circuit_evaluations": 0,
+    "parameters": 33
+   },
+   "MLP (16,16)": {
+    "test_acc_mean": 0.8733333333333333,
+    "test_acc_std": 0.052153619241621194,
+    "train_seconds": 0.21916092000028584,
+    "circuit_evaluations": 0,
+    "parameters": 337
+   }
+  },
+  "circles": {
+   "variational classifier (3 layers)": {
+    "test_acc_mean": 0.9186666666666666,
+    "test_acc_std": 0.06671997868371628,
+    "train_seconds": 0.7024164999998902,
+    "circuit_evaluations": 225000,
+    "parameters": 12
+   },
+   "quantum kernel + SVM": {
+    "test_acc_mean": 0.9493333333333334,
+    "test_acc_std": 0.023323807579381222,
+    "train_seconds": 0.03171627999981865,
+    "circuit_evaluations": 11325,
+    "parameters": 35.4
+   },
+   "logistic regression": {
+    "test_acc_mean": 0.4906666666666667,
+    "test_acc_std": 0.01554920505292079,
+    "train_seconds": 0.002502380000078119,
+    "circuit_evaluations": 0,
+    "parameters": 3
+   },
+   "RBF SVM": {
+    "test_acc_mean": 0.988,
+    "test_acc_std": 0.0077746025264604016,
+    "train_seconds": 0.0007678600006329362,
+    "circuit_evaluations": 0,
+    "parameters": 48.6
+   },
+   "MLP (8 hidden)": {
+    "test_acc_mean": 0.6426666666666667,
+    "test_acc_std": 0.1646329250180534,
+    "train_seconds": 0.18161843999951088,
+    "circuit_evaluations": 0,
+    "parameters": 33
+   },
+   "MLP (16,16)": {
+    "test_acc_mean": 0.9906666666666667,
+    "test_acc_std": 0.003265986323710871,
+    "train_seconds": 0.3605197799999587,
+    "circuit_evaluations": 0,
+    "parameters": 337
+   }
+  }
+ }
+}
