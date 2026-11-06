@@ -7,3 +7,4 @@ __pycache__/
 *.log
 tracks/*/results/*.tmp
 tracks/*/results/build/
+tracks/G_xv6/xv6-riscv/

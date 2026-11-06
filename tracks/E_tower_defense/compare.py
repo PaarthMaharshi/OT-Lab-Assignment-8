@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from td.baselines import random_placement
-from td.maps import make_wave, snake_map
+from td.maps import make_wave, snake_map, spiral_map
 from td.optim import anneal, greedy, ilp
 from td.sim import DEFAULT_TYPES as TYPES, simulate, validate_placement
 from td.surrogate import Surrogate
@@ -30,32 +30,36 @@ SA_EVALS = 800
 RANDOM_RUNS = 100
 
 
-def instance(wave_seed):
-    return snake_map(15, 11), make_wave(wave_seed, 40)
+MAPS = {"snake 15x11": lambda: snake_map(15, 11), "spiral 13x11": lambda: spiral_map(13, 11)}
+
+
+def instance(wave_seed, map_name="snake 15x11"):
+    return MAPS[map_name](), make_wave(wave_seed, 40)
 
 
 def sa_job(args):
-    ws, budget, seed = args
-    g, wave = instance(ws)
+    map_name, ws, budget, seed = args
+    g, wave = instance(ws, map_name)
     t = time.perf_counter()
     p, _ = anneal(g, TYPES, wave, budget, evals=SA_EVALS, seed=seed)
     dt = time.perf_counter() - t
     validate_placement(g, p, TYPES, budget)
     r = simulate(g, p, TYPES, wave)
-    return ws, budget, seed, r.damage, r.leaked, dt, p
+    return map_name, ws, budget, seed, r.damage, r.leaked, dt, p
 
 
 def main():
-    jobs = [(ws, b, s) for ws in WAVE_SEEDS for b in BUDGETS for s in SA_SEEDS]
+    jobs = [(m, ws, b, s) for m in MAPS for ws in WAVE_SEEDS for b in BUDGETS for s in SA_SEEDS]
     with ProcessPoolExecutor() as ex:
         sa = list(ex.map(sa_job, jobs))
     out = []
-    for ws in WAVE_SEEDS:
-        g, wave = instance(ws)
+    for map_name in MAPS:
+      for ws in WAVE_SEEDS:
+        g, wave = instance(ws, map_name)
         total = sum(e.hp for e in wave)
         sur = Surrogate(g, TYPES, wave)
         for b in BUDGETS:
-            row = {"wave_seed": ws, "budget": b, "total_hp": total}
+            row = {"map": map_name, "wave_seed": ws, "budget": b, "total_hp": total}
             rs = []
             for s in range(RANDOM_RUNS):
                 p = random_placement(g, TYPES, b, random.Random(s))
@@ -79,22 +83,22 @@ def main():
             row["ilp"] = {"damage": ri.damage, "leaked": ri.leaked, "seconds": ti,
                           "surrogate": sur.value(pi), "proven_optimal": opt,
                           "towers": len(pi)}
-            mine = [x for x in sa if x[0] == ws and x[1] == b]
-            dm = [x[3] for x in mine]
+            mine = [x for x in sa if x[0] == map_name and x[1] == ws and x[2] == b]
+            dm = [x[4] for x in mine]
             row["anneal"] = {"damage_mean": st.mean(dm), "damage_std": st.pstdev(dm),
-                             "damage_best": max(dm), "leaked_mean": st.mean(x[4] for x in mine),
-                             "seconds_mean": st.mean(x[5] for x in mine),
+                             "damage_best": max(dm), "leaked_mean": st.mean(x[5] for x in mine),
+                             "seconds_mean": st.mean(x[6] for x in mine),
                              "evals": SA_EVALS, "runs": len(mine)}
             out.append(row)
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
     with open(os.path.join(HERE, "results", "comparison.json"), "w") as f:
         json.dump(out, f, indent=1)
 
-    lines = ["| wave | budget | total HP | random (mean±sd) | greedy | ILP | annealing (mean±sd, best) |",
-             "|---|---|---|---|---|---|---|"]
+    lines = ["| map | wave | budget | total HP | random (mean±sd) | greedy | ILP | annealing (mean±sd, best) |",
+             "|---|---|---|---|---|---|---|---|"]
     for r in out:
         lines.append(
-            f"| {r['wave_seed']} | {r['budget']} | {r['total_hp']:.0f} "
+            f"| {r['map']} | {r['wave_seed']} | {r['budget']} | {r['total_hp']:.0f} "
             f"| {r['random']['damage_mean']:.0f}±{r['random']['damage_std']:.0f} "
             f"| {r['greedy']['damage']:.0f} ({r['greedy']['seconds']*1000:.0f} ms) "
             f"| {r['ilp']['damage']:.0f} ({r['ilp']['seconds']:.1f} s) "
@@ -105,7 +109,7 @@ def main():
         f.write(table + "\n")
     print(table)
 
-    labels = [f"w{r['wave_seed']}/B{r['budget']}" for r in out]
+    labels = [f"{r['map'].split()[0][:2]}/w{r['wave_seed']}/B{r['budget']}" for r in out]
     xs = range(len(out))
     fig, ax = plt.subplots(figsize=(10, 4.5))
     w = 0.2

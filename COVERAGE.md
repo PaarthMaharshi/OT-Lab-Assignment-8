@@ -114,3 +114,11 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 |---|---|---|---|
 | Test-suite minimization (weighted set cover) | greedy vs ILP vs random | tracks/J_software_engineering | 654 -> 61 tests, 100% coverage, 30/33 mutants kept, 1.74x end to end |
 | Test prioritization | greedy additional coverage | tracks/J_software_engineering | APFD 0.962 vs 0.743 random |
+
+## Track G (xv6) - OS concept: CPU scheduling
+
+| Feature | Objective | Where | Result |
+|---|---|---|---|
+| Lottery scheduler + settickets/getpinfo | proportional share | tracks/G_xv6 (xv6_scheduling.patch) | CPU shares 0.49/0.34/0.17 for 30/20/10 tickets |
+| MLFQ (3 levels, boost, preemption) | response / turnaround | tracks/G_xv6 | interactive delay 0.00-0.02 ticks; turnaround 1-7% below RR |
+| Correctness | usertests -q | results/usertests_policy*.txt | ALL TESTS PASSED under all 3 policies |

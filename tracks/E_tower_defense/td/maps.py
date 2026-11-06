@@ -34,3 +34,20 @@ def make_wave(seed=0, n=30, gap=2):
         wave.append(Enemy(hp=hp, speed=sp, spawn=t))
         t += rng.randint(1, gap)
     return wave
+
+
+def spiral_map(width=13, height=11):
+    """Rectangular inward spiral with a one-cell gap between turns (a second geometry for the comparison)."""
+    dirs = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+    path, seen, d, turns = [(0, 0)], {(0, 0)}, 0, 0
+    while turns < 3:
+        cx, cy = path[-1]
+        nx, ny = cx + dirs[d][0], cy + dirs[d][1]
+        nbrs = [(nx + a, ny + b) for a, b in dirs]
+        ok = (0 <= nx < width and 0 <= ny < height and (nx, ny) not in seen
+              and all(n == (cx, cy) or n not in seen for n in nbrs))
+        if ok:
+            path.append((nx, ny)); seen.add((nx, ny)); turns = 0
+        else:
+            d = (d + 1) % 4; turns += 1
+    return GameMap(width, height, tuple(path))

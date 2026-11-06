@@ -1,5 +1,6 @@
 [
  {
+  "map": "snake 15x11",
   "wave_seed": 0,
   "budget": 20,
   "total_hp": 2860.0,
@@ -11,14 +12,14 @@
   "greedy": {
    "damage": 2335.0,
    "leaked": 10,
-   "seconds": 0.45248110000102315,
+   "seconds": 0.32497499999954016,
    "surrogate": 2860.0,
    "towers": 2
   },
   "ilp": {
    "damage": 2555.0,
    "leaked": 7,
-   "seconds": 2.5463850000014645,
+   "seconds": 1.827330100000836,
    "surrogate": 2860.0,
    "proven_optimal": true,
    "towers": 2
@@ -28,12 +29,13 @@
    "damage_std": 5.830951894845301,
    "damage_best": 2570.0,
    "leaked_mean": 6.2,
-   "seconds_mean": 7.454305339999701,
+   "seconds_mean": 10.142762539999604,
    "evals": 800,
    "runs": 5
   }
  },
  {
+  "map": "snake 15x11",
   "wave_seed": 0,
   "budget": 30,
   "total_hp": 2860.0,
@@ -45,14 +47,14 @@
   "greedy": {
    "damage": 2335.0,
    "leaked": 10,
-   "seconds": 1.0115290000030654,
+   "seconds": 0.6466040999985125,
    "surrogate": 2860.0,
    "towers": 2
   },
   "ilp": {
    "damage": 2640.0,
    "leaked": 6,
-   "seconds": 2.6786456999980146,
+   "seconds": 1.7700336999987485,
    "surrogate": 2860.0,
    "proven_optimal": true,
    "towers": 1
@@ -62,12 +64,13 @@
    "damage_std": 15.67673435381234,
    "damage_best": 2860.0,
    "leaked_mean": 0.8,
-   "seconds_mean": 9.165281719999621,
+   "seconds_mean": 10.588060799999948,
    "evals": 800,
    "runs": 5
   }
  },
  {
+  "map": "snake 15x11",
   "wave_seed": 1,
   "budget": 20,
   "total_hp": 2660.0,
@@ -79,14 +82,14 @@
   "greedy": {
    "damage": 2165.0,
    "leaked": 13,
-   "seconds": 0.4323733999990509,
+   "seconds": 0.3126911999988806,
    "surrogate": 2660.0,
    "towers": 2
   },
   "ilp": {
    "damage": 2180.0,
    "leaked": 12,
-   "seconds": 1.1752718999996432,
+   "seconds": 0.8702283999991778,
    "surrogate": 2660.0,
    "proven_optimal": true,
    "towers": 2
@@ -96,12 +99,13 @@
    "damage_std": 16.0,
    "damage_best": 2205.0,
    "leaked_mean": 13,
-   "seconds_mean": 8.934922260000167,
+   "seconds_mean": 9.798820459999842,
    "evals": 800,
    "runs": 5
   }
  },
  {
+  "map": "snake 15x11",
   "wave_seed": 1,
   "budget": 30,
   "total_hp": 2660.0,
@@ -113,14 +117,14 @@
   "greedy": {
    "damage": 2165.0,
    "leaked": 13,
-   "seconds": 0.8836816999973962,
+   "seconds": 0.654371300001003,
    "surrogate": 2660.0,
    "towers": 2
   },
   "ilp": {
    "damage": 2172.0,
    "leaked": 15,
-   "seconds": 2.4700019000010798,
+   "seconds": 1.6816484999999375,
    "surrogate": 2660.0,
    "proven_optimal": true,
    "towers": 1
@@ -130,12 +134,13 @@
    "damage_std": 46.739276845068964,
    "damage_best": 2645.0,
    "leaked_mean": 1.8,
-   "seconds_mean": 14.226996099999814,
+   "seconds_mean": 9.338750020000589,
    "evals": 800,
    "runs": 5
   }
  },
  {
+  "map": "snake 15x11",
   "wave_seed": 2,
   "budget": 20,
   "total_hp": 3440.0,
@@ -147,14 +152,14 @@
   "greedy": {
    "damage": 2810.0,
    "leaked": 11,
-   "seconds": 0.4669280999987677,
+   "seconds": 0.31292670000038925,
    "surrogate": 3255.0,
    "towers": 2
   },
   "ilp": {
    "damage": 2810.0,
    "leaked": 11,
-   "seconds": 1.0705922000015562,
+   "seconds": 0.7770734999994602,
    "surrogate": 3255.0,
    "proven_optimal": true,
    "towers": 2
@@ -164,12 +169,13 @@
    "damage_std": 29.0516780926679,
    "damage_best": 2830.0,
    "leaked_mean": 11.4,
-   "seconds_mean": 10.923634699998365,
+   "seconds_mean": 12.096697580000182,
    "evals": 800,
    "runs": 5
   }
  },
  {
+  "map": "snake 15x11",
   "wave_seed": 2,
   "budget": 30,
   "total_hp": 3440.0,
@@ -181,14 +187,14 @@
   "greedy": {
    "damage": 3200.0,
    "leaked": 3,
-   "seconds": 0.9113124999967113,
+   "seconds": 0.6586492000005819,
    "surrogate": 3440.0,
    "towers": 3
   },
   "ilp": {
    "damage": 3325.0,
    "leaked": 1,
-   "seconds": 6.096430199999304,
+   "seconds": 4.701896500000657,
    "surrogate": 3440.0,
    "proven_optimal": true,
    "towers": 3
@@ -198,7 +204,217 @@
    "damage_std": 105.74384142823638,
    "damage_best": 3390.0,
    "leaked_mean": 1.4,
-   "seconds_mean": 10.44865276000055,
+   "seconds_mean": 11.88689351999965,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 0,
+  "budget": 20,
+  "total_hp": 2860.0,
+  "random": {
+   "damage_mean": 1034.65,
+   "damage_std": 1124.115264330131,
+   "leaked_mean": 26.86
+  },
+  "greedy": {
+   "damage": 2445.0,
+   "leaked": 7,
+   "seconds": 0.3439342999990913,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2520.0,
+   "leaked": 8,
+   "seconds": 1.050434500000847,
+   "surrogate": 2860.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2590.0,
+   "damage_std": 0.0,
+   "damage_best": 2590.0,
+   "leaked_mean": 6,
+   "seconds_mean": 9.246336900000097,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 0,
+  "budget": 30,
+  "total_hp": 2860.0,
+  "random": {
+   "damage_mean": 1743.51,
+   "damage_std": 1035.657930930865,
+   "leaked_mean": 17.71
+  },
+  "greedy": {
+   "damage": 2445.0,
+   "leaked": 7,
+   "seconds": 0.658086600000388,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2652.0,
+   "leaked": 6,
+   "seconds": 1.4576353000011295,
+   "surrogate": 2860.0,
+   "proven_optimal": true,
+   "towers": 1
+  },
+  "anneal": {
+   "damage_mean": 2860.0,
+   "damage_std": 0.0,
+   "damage_best": 2860.0,
+   "leaked_mean": 0,
+   "seconds_mean": 8.713930060000347,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 1,
+  "budget": 20,
+  "total_hp": 2660.0,
+  "random": {
+   "damage_mean": 878.05,
+   "damage_std": 953.1683731114875,
+   "leaked_mean": 29.61
+  },
+  "greedy": {
+   "damage": 2180.0,
+   "leaked": 14,
+   "seconds": 0.27057739999872865,
+   "surrogate": 2615.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2180.0,
+   "leaked": 14,
+   "seconds": 0.777660099998684,
+   "surrogate": 2615.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2185.0,
+   "damage_std": 0.0,
+   "damage_best": 2185.0,
+   "leaked_mean": 14,
+   "seconds_mean": 7.976245759999438,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 1,
+  "budget": 30,
+  "total_hp": 2660.0,
+  "random": {
+   "damage_mean": 1552.48,
+   "damage_std": 948.0631780635719,
+   "leaked_mean": 19.46
+  },
+  "greedy": {
+   "damage": 2565.0,
+   "leaked": 3,
+   "seconds": 0.5725467000011122,
+   "surrogate": 2660.0,
+   "towers": 3
+  },
+  "ilp": {
+   "damage": 2392.0,
+   "leaked": 10,
+   "seconds": 1.333433399999194,
+   "surrogate": 2660.0,
+   "proven_optimal": true,
+   "towers": 1
+  },
+  "anneal": {
+   "damage_mean": 2622.2,
+   "damage_std": 44.291759956000845,
+   "damage_best": 2660.0,
+   "leaked_mean": 1.4,
+   "seconds_mean": 9.051626079999915,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 2,
+  "budget": 20,
+  "total_hp": 3440.0,
+  "random": {
+   "damage_mean": 1071.95,
+   "damage_std": 1164.9040507698478,
+   "leaked_mean": 29.17
+  },
+  "greedy": {
+   "damage": 2700.0,
+   "leaked": 13,
+   "seconds": 0.2775830999999016,
+   "surrogate": 3100.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2700.0,
+   "leaked": 13,
+   "seconds": 0.4877070000002277,
+   "surrogate": 3100.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2740.0,
+   "damage_std": 0.0,
+   "damage_best": 2740.0,
+   "leaked_mean": 12,
+   "seconds_mean": 9.03828308000011,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "map": "spiral 13x11",
+  "wave_seed": 2,
+  "budget": 30,
+  "total_hp": 3440.0,
+  "random": {
+   "damage_mean": 1883.72,
+   "damage_std": 1166.001998969127,
+   "leaked_mean": 20.26
+  },
+  "greedy": {
+   "damage": 3300.0,
+   "leaked": 2,
+   "seconds": 0.5749629999991157,
+   "surrogate": 3440.0,
+   "towers": 3
+  },
+  "ilp": {
+   "damage": 3100.0,
+   "leaked": 8,
+   "seconds": 1.341078199999174,
+   "surrogate": 3440.0,
+   "proven_optimal": true,
+   "towers": 3
+  },
+  "anneal": {
+   "damage_mean": 3309.2,
+   "damage_std": 50.66517541665083,
+   "damage_best": 3365.0,
+   "leaked_mean": 1.4,
+   "seconds_mean": 7.536095719999866,
    "evals": 800,
    "runs": 5
   }

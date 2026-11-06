@@ -1,7 +1,23 @@
-# AI Failure Log (minimum 3 cases)
+# AI Failure Log
 
-| # | Track | Tool | What the AI got wrong (wrong / unsafe / inefficient / misleading) | How detected | Fix | Lesson |
-|---|---|---|---|---|---|---|
-| 1 | | | | | | |
-| 2 | | | | | | |
-| 3 | | | | | | |
+Cases where AI-generated code, tests, experiments or claims were wrong, misleading, unsafe or inefficient (the assignment requires at least 3). Every entry was found during this project and is also described in the relevant `prompts/<track>/` log. "Tool" is always Claude Code (Claude Sonnet 5.5) for the entries below.
+
+| # | Track | What went wrong | How it was detected | Fix | Lesson |
+|---|---|---|---|---|---|
+| 1 | E | The first surrogate objective let each tower damage every passing enemy independently, so one gun "killed" all 40 enemies (surrogate 2860, simulator 915). Greedy scored below random and ILP looked good only by luck. | Greedy below the random mean and identical at two budgets in the comparison table | Added a per-tower firing capacity (max-flow surrogate, still submodular) | Validate a surrogate against the real simulator before trusting any optimizer built on it |
+| 2 | E | A cardinality bound (1-1/e) would have been claimed for greedy; the budget is a knapsack constraint | Reading the theorem's assumptions | Used the knapsack bound (1/2)(1-1/e) and said it holds only on the surrogate | Check a guarantee's conditions, do not quote it from memory |
+| 3 | E | The first QUBO used a cardinality penalty of 3-4 against tower values of about 100, so the minimum-energy states had too many towers; QAOA looked worse than uniform sampling | `feasible_in_all: false` and a feasible-state probability below the uniform baseline | Penalty set from the value scale (1.2 x the largest value) and QAOA energies normalised | Same mistake as case 8: a penalty term must be sized against the objective |
+| 4 | A | AdaGrad "converged in one step" on the quadratic because the start point was all ones and its first step lands exactly on the optimum | Final value exactly 0 | Random start point | A too-good result is a bug until explained |
+| 5 | A | Full-batch GD's best learning rate was on the edge of the tuning grid | Looking at the chosen value | Widened the grid to 1e-4..1e2 | Check that a tuned value is not at the boundary |
+| 6 | A | A test claimed the empirical Fisher is closer to the Hessian near the optimum than at w=0; at w=0 they coincide exactly | The test failed | Tested at 3 x w* instead | Check a claim at the chosen point before encoding it |
+| 7 | B | A model-fit count for the Lasso row was hard-coded as "40" and never measured | Review of the results table | Real counter (28.2) | Every reported count must come from instrumentation |
+| 8 | B | QUBO feature selection used penalty P=1.0 before the penalty sweep showed large P degrades solutions | The sweep | Reran with P=0.3 chosen from the sweep | A penalty weight is a trade-off, not "as large as possible" |
+| 9 | C | QNG "failed" (error 5.4) because it was untuned while others used defaults; the shot-noise study used COBYLA that stopped after about 40 evaluations; "best of 1000 shots = 100%" had no random baseline | Implausible numbers | Tuned every optimizer on separate seeds at an equal circuit budget; SPSA with fixed iterations; added a random-bitstring baseline | Fair comparison means the same tuning effort and a null baseline |
+| 10 | D | Raw MGDA left the large-scale task untrained (loss 344) and the first multi-task setup had no real conflict, so equal weighting won | The result table | Redesigned with a one-feature shared layer; added normalised MGDA and kept the raw-MGDA failure | Pick a benchmark where the method's assumption is actually tested |
+| 11 | F | A control program whose code did not change showed a 1.5x "speedup"; the first run of each executable was 2x slower (cold start) | Zero instruction change but nonzero speedup | Warm-up, 7 repetitions, longer workloads, A/A noise-floor control | Measure the noise before claiming a gain |
+| 12 | H | Index sizes were measured as 0 MB for 11 of 15 indexes (dropped indexes leave free pages that get reused); the first workload was so small that savings equalled timing noise; one index set caused a plan regression that ran for minutes | Printed sizes; savings of 0.02 s; a hung run | Fresh database copy per measurement, 3.1M rows, per-query timeout | Isolate measurements; add timeouts around anything that can run away |
+| 13 | I | Shor's success rate printed 200/200 because the post-processing tried multiples of the period, letting a useless measurement succeed by classical trial | Suspiciously perfect rate | Strict decoding (about 50% per attempt) | Do not let post-processing do the algorithm's job |
+| 14 | I | The annealing "minimum gap" was about 1e-13 (the degenerate partner of the ground state), and a first fix still failed its own test | The number and then a failing test | Gap measured inside the symmetry-even sector (0.43) | Check what a measured quantity physically means |
+| 15 | I | The 8-hidden-unit MLP baseline (0.64 on circles) would have made the quantum models look competitive | Comparison with the SVM | Added a stronger MLP (0.99) | A weak baseline manufactures an advantage |
+| 16 | J | A mutant created an infinite loop; the mutation runner crashed and discarded the run (no per-test timeout) | Traceback after about 10 minutes | Per-test timeout, whole-run timeout handled as "detected", unconditional restore of the mutated file | Anything that executes mutated code needs a timeout |
+| 17 | all | Several results files crashed on `numpy` types when writing JSON (A, C, E), and shell heredocs with long content failed (D, F) | Tracebacks | Conversion fallback; editor tool instead of heredoc | Cheap, but it cost real runs; write results incrementally |

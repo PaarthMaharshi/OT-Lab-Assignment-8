@@ -1,0 +1,80 @@
+{
+ "small_instance": {
+  "candidate_cells": 14,
+  "towers_k": 3,
+  "penalty_P": 66.0,
+  "exact_min_is_feasible": true,
+  "exact_min_energy": -165.0,
+  "mean_energy_of_all_2^n_states": 1118.25,
+  "SA_best_energy_10_runs": -165.0,
+  "SA_reaches_exact": true,
+  "QAOA": {
+   "p=1": {
+    "expected_energy": -52.887760064742025,
+    "approx_ratio_(mean-E)/(mean-Emin)": 0.9126341399296645,
+    "P(optimal)": 0.01070821848323961,
+    "P(feasible: exactly k towers)": 0.35975241666021696
+   },
+   "p=2": {
+    "expected_energy": -91.31398714336405,
+    "approx_ratio_(mean-E)/(mean-Emin)": 0.942578598981776,
+    "P(optimal)": 0.016258574742904017,
+    "P(feasible: exactly k towers)": 0.498610025618919
+   },
+   "p=3": {
+    "expected_energy": -115.39622108947457,
+    "approx_ratio_(mean-E)/(mean-Emin)": 0.9613451946927524,
+    "P(optimal)": 0.02087958134943589,
+    "P(feasible: exactly k towers)": 0.6395385770325184
+   }
+  },
+  "feasible_states_fraction": 0.022216796875,
+  "note": "QAOA simulated exactly on 14 qubits; the full 70-cell QUBO would need 70 qubits (2^70 amplitudes) so it cannot be simulated"
+ },
+ "full_map_gun_only": {
+  "budget 30 (3 guns), mean damage over 3 waves": {
+   "QUBO+SA": {
+    "damage": 2460.0,
+    "feasible_in_all": true
+   },
+   "greedy (surrogate)": {
+    "damage": 2566.6666666666665,
+    "feasible_in_all": true
+   },
+   "ILP (surrogate)": {
+    "damage": 2755.0,
+    "feasible_in_all": true
+   },
+   "annealing on simulator": {
+    "damage": 2961.6666666666665,
+    "feasible_in_all": true
+   },
+   "random": {
+    "damage": 2643.2333333333336,
+    "feasible_in_all": true
+   }
+  },
+  "budget 40 (4 guns), mean damage over 3 waves": {
+   "QUBO+SA": {
+    "damage": 2875.0,
+    "feasible_in_all": true
+   },
+   "greedy (surrogate)": {
+    "damage": 2566.6666666666665,
+    "feasible_in_all": true
+   },
+   "ILP (surrogate)": {
+    "damage": 2945.0,
+    "feasible_in_all": true
+   },
+   "annealing on simulator": {
+    "damage": 2986.6666666666665,
+    "feasible_in_all": true
+   },
+   "random": {
+    "damage": 2928.2,
+    "feasible_in_all": true
+   }
+  }
+ }
+}

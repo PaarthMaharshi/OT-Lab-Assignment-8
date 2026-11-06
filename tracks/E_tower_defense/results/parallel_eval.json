@@ -1,0 +1,37 @@
+{
+ "jobs": 12,
+ "task": "annealing, 800 simulator evaluations each",
+ "rows": {
+  "workers=1": {
+   "seconds": 43.424852199999805,
+   "speedup": 1.0,
+   "efficiency": 1.0,
+   "mean_damage": 2849.3333333333335
+  },
+  "workers=2": {
+   "seconds": 24.806056200000967,
+   "speedup": 1.7505746116949503,
+   "efficiency": 0.8752873058474752,
+   "mean_damage": 2849.3333333333335
+  },
+  "workers=4": {
+   "seconds": 15.799329699999362,
+   "speedup": 2.748524970651227,
+   "efficiency": 0.6871312426628068,
+   "mean_damage": 2849.3333333333335
+  },
+  "workers=6": {
+   "seconds": 14.423561199999313,
+   "speedup": 3.010688664045179,
+   "efficiency": 0.5017814440075298,
+   "mean_damage": 2849.3333333333335
+  },
+  "workers=12": {
+   "seconds": 16.54616409999835,
+   "speedup": 2.6244664284457406,
+   "efficiency": 0.2187055357038117,
+   "mean_damage": 2849.3333333333335
+  }
+ },
+ "note": "process start-up included; 12 logical processors on this machine"
+}
