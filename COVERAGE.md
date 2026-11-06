@@ -21,12 +21,12 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 | Convergence: convex O(1/k), strongly convex linear, non-convex stationary | PPT1 s20 | exp2 | fig2 | WIP |
 | Optimizer / step-size tuning | PPT1 s21 | exp3 (25-point grid) | fig3 | WIP |
 | Continuous vs discrete optimization | PPT1 s23 | A, B | | | TODO |
-| Greedy forward selection / backward elimination (feature selection) | PPT1 s24-25 | B | | | TODO |
-| ILP (knapsack), Branch-and-Bound | PPT1 s26 | B | | | TODO |
-| Dynamic programming | PDF | B | | | TODO |
-| Sparse learning L0/L1 (Lasso soft-threshold) | PPT1 s27 | B | | | TODO |
-| Discrete choices in deep learning (NAS, quantization, pruning) | PPT1 s28 | B or J | | | TODO |
-| QUBO / Ising (binary-to-spin conversion, penalty terms) | PPT3 s23, s28 + PDF | B | | | TODO |
+| Greedy forward selection / backward elimination (feature selection) | PPT1 s24-25 | featsel.py; exp_featsel | 114 / 455 fits, test acc 0.961 / 0.968 | WIP |
+| ILP (knapsack), Branch-and-Bound | PPT1 s26 | knapsack.py; exp_knapsack | B&B nodes 55-150k; ILP = DP optimum | WIP |
+| Dynamic programming | PDF | knapsack.dp, scheduling.weighted_dp | exact; = ILP | WIP |
+| Sparse learning L0/L1 (Lasso soft-threshold) | PPT1 s27 | exp_featsel (L1 path); test slide27 | L1 test acc 0.967; L0 only as exhaustive search | WIP |
+| Discrete choices in deep learning (NAS, quantization, pruning) | PPT1 s28 | not done | listed only | TODO |
+| QUBO / Ising (binary-to-spin conversion, penalty terms) | PPT3 s23, s28 + PDF | qubo.py; exp_qubo_penalty | energies equal over all 2^n; feasible only for P >= 0.2 | WIP |
 | Submodularity, diminishing returns, testing the property | PPT1 s29-30 | D | | | TODO |
 | Greedy (1-1/e) guarantee, checking its assumptions | PPT1 s31 | D, E | | | TODO |
 | Submodular applications (summarization, sensor placement) | PPT1 s32-33 | D | | | TODO |
