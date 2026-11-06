@@ -12,7 +12,7 @@ Main case study (Track E): **Tower-defense placement optimization**.
 | C | Quantum optimization (VQE, QAOA, parameter-shift, SPSA, QNG) | `tracks/C_quantum_optimization` | WIP |
 | D | Submodular, parallel, distributed (FedAvg, MGDA, GradNorm) | `tracks/D_submodular_parallel_distributed` | WIP |
 | E | **Main case study: tower defense** | `tracks/E_tower_defense` | WIP |
-| F | Compiler optimization | `tracks/F_compiler` | TODO |
+| F | Compiler optimization | `tracks/F_compiler` | WIP |
 | G | xv6 OS optimization | `tracks/G_xv6` | TODO |
 | H | DBMS optimization | `tracks/H_dbms` | TODO |
 | I | Quantum algorithms and QML vs classical | `tracks/I_quantum_algorithms_qml` | TODO |

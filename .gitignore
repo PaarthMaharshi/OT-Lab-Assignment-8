@@ -6,3 +6,4 @@ __pycache__/
 *.key
 *.log
 tracks/*/results/*.tmp
+tracks/*/results/build/

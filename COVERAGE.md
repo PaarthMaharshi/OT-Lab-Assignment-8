@@ -93,3 +93,10 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 | Dynamic programming | B | Not a dedicated PPT section. |
 
 > Default plan: cover everything above. It is cheap to include and the PDF names these topics. If your instructor says some were not taught, mark them `N/A (not taught)`.
+
+## Track F (compiler) - decisions solved with Chapter 6 methods
+
+| Decision | Method | Where | Result |
+|---|---|---|---|
+| Pass ordering | greedy vs exhaustive (24 orders) | tracks/F_compiler | greedy optimal in 3/6, 10 vs 96 pass runs |
+| Register allocation | greedy colouring vs ILP | tracks/F_compiler | greedy = exact on all graphs |
