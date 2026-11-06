@@ -1,0 +1,67 @@
+{
+ "magnitude_pruning_h16": {
+  "0% of weights removed": {
+   "no_retraining_acc": 0.9470000000000001,
+   "std": 0.013999999999999999,
+   "after_masked_finetune_acc": 0.959,
+   "finetune_std": 0.008455767262643885
+  },
+  "50% of weights removed": {
+   "no_retraining_acc": 0.706,
+   "std": 0.1398356177803066,
+   "after_masked_finetune_acc": 0.9565,
+   "finetune_std": 0.01124722187920202
+  },
+  "80% of weights removed": {
+   "no_retraining_acc": 0.4235,
+   "std": 0.06262188115986295,
+   "after_masked_finetune_acc": 0.838,
+   "finetune_std": 0.043857724519176786
+  },
+  "90% of weights removed": {
+   "no_retraining_acc": 0.37,
+   "std": 0.05659063526768364,
+   "after_masked_finetune_acc": 0.5205,
+   "finetune_std": 0.2512240036302264
+  },
+  "95% of weights removed": {
+   "no_retraining_acc": 0.469,
+   "std": 0.08465518294824009,
+   "after_masked_finetune_acc": 0.4935,
+   "finetune_std": 0.009823441352194259
+  }
+ },
+ "int8_quantisation_h16": {
+  "fp64": {
+   "test_acc_mean": 0.9470000000000001,
+   "std": 0.013999999999999999
+  },
+  "int8": {
+   "test_acc_mean": 0.9475,
+   "std": 0.01341640786499875
+  },
+  "bytes_per_weight": {
+   "fp32": 4,
+   "int8": 1
+  }
+ },
+ "architecture_search_width": {
+  "accuracy_by_width": {
+   "1": 0.85,
+   "2": 0.8591666666666667,
+   "4": 0.9283333333333333,
+   "8": 0.9441666666666666,
+   "16": 0.9416666666666667,
+   "32": 0.94
+  },
+  "exhaustive_best": 8,
+  "exhaustive_evaluations": 6,
+  "greedy_choice": 8,
+  "greedy_evaluations": 5,
+  "note": "accuracy is measured on the test split here for brevity; a real search would use a validation split"
+ },
+ "hinge_vs_logistic_linear_moons": {
+  "hinge_svm_acc": 0.8545,
+  "logistic_acc": 0.856
+ }
+}

@@ -1,0 +1,15 @@
+row_sum_s 0.0150
+col_sum_s 0.8360
+matmul_naive_s 1.3990
+matmul_blocked_s 0.1980
+matmul_results_equal 1
+false_sharing_packed_s 0.7210
+false_sharing_padded_s 0.3320
+sum_serial_s 0.0070
+sum_critical_s 0.2490
+sum_atomic_s 0.2690
+sum_reduction_s 0.0020
+race_expected 4000000
+race_worst_result 1129712
+race_runs_with_lost_updates_of_5 5
+sink 1

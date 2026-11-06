@@ -1,0 +1,102 @@
+{
+ "planning_formulas": {
+  "training_memory_GB_1B_params": 16.0,
+  "training_memory_GB_10B_params": 160.0,
+  "fits_80GB_GPU_1B": true,
+  "fits_80GB_GPU_10B": false,
+  "ring_allreduce_MB_per_worker_400MB_p8": 700.0,
+  "ring_allreduce_ms_at_10GBps": 70.0,
+  "hybrid_layouts_64_gpus": 28,
+  "amdahl_training_s0.1_p8": 4.705882352941176,
+  "successive_halving_epoch_units_27_eta3": 108,
+  "note": "slide values: 16 GB / 160 GB, 700 MB, 70 ms, 28 layouts, 4.71x, 108 epoch units"
+ },
+ "communication_cost": {
+  "measured_round_trip_s": {
+   "16": 4.795000040758168e-05,
+   "1000": 4.509999962465372e-05,
+   "10000": 2.919999951700447e-05,
+   "100000": 3.885000023728935e-05,
+   "1000000": 0.0007049999994706013,
+   "4000000": 0.004216350000206148
+  },
+  "model_alpha_plus_n_over_beta_s": {
+   "16": 4.7968727607585604e-05,
+   "1000": 4.9120450407826864e-05,
+   "10000": 5.965450041003351e-05,
+   "100000": 0.00016499500043209991,
+   "1000000": 0.001218400000652764,
+   "4000000": 0.004729750001388311
+  },
+  "alpha_us": 47.95000040758168,
+  "bandwidth_MB_per_s": 854.372249810349,
+  "batching_100x100B_s": 0.004409099999975297,
+  "one_10KB_message_s": 9.809999937715475e-05,
+  "batching_speedup": 44.94495441354789,
+  "note": "Python multiprocessing Pipe on one machine (round trip includes a 1-byte reply)"
+ },
+ "topk_sparsification": {
+  "setup": "8 simulated workers, logistic regression d=200, 300 synchronous steps",
+  "rows": {
+   "no compression": {
+    "final_loss": 0.14942783950731564,
+    "fraction_of_dense_volume": 1.0
+   },
+   "top-10% without error feedback": {
+    "final_loss": 0.20986169490849058,
+    "fraction_of_dense_volume": 0.2
+   },
+   "top-10% with error feedback": {
+    "final_loss": 0.149264019699542,
+    "fraction_of_dense_volume": 0.2
+   },
+   "top-1% without error feedback": {
+    "final_loss": 0.37030573250608323,
+    "fraction_of_dense_volume": 0.02
+   },
+   "top-1% with error feedback": {
+    "final_loss": 0.14773127184249318,
+    "fraction_of_dense_volume": 0.02
+   }
+  }
+ },
+ "parallel_hyperparameter_search": {
+  "grid 81 x 27 epochs, 1 process": {
+   "seconds": 0.705481899998631,
+   "best_val_acc": 0.7775,
+   "epoch_units": 2187
+  },
+  "grid 81 x 27 epochs, 8 processes": {
+   "seconds": 0.1558634000011807,
+   "best_val_acc": 0.7775,
+   "epoch_units": 2187
+  },
+  "random 27 x 27 epochs, 8 processes": {
+   "seconds": 0.05084060000081081,
+   "best_val_acc": 0.7708333333333334,
+   "epoch_units": 729
+  },
+  "successive halving 27 configs, 8 processes": {
+   "seconds": 0.04193639999903098,
+   "best_val_acc": 0.7583333333333333,
+   "epoch_units": 108
+  }
+ },
+ "locality_sync_openmp": {
+  "row_sum_s": 0.015,
+  "col_sum_s": 0.836,
+  "matmul_naive_s": 1.399,
+  "matmul_blocked_s": 0.198,
+  "matmul_results_equal": 1.0,
+  "false_sharing_packed_s": 0.721,
+  "false_sharing_padded_s": 0.332,
+  "sum_serial_s": 0.007,
+  "sum_critical_s": 0.249,
+  "sum_atomic_s": 0.269,
+  "sum_reduction_s": 0.002,
+  "race_expected": 4000000.0,
+  "race_worst_result": 1129712.0,
+  "race_runs_with_lost_updates_of_5": 5.0,
+  "sink": 1.0
+ }
+}

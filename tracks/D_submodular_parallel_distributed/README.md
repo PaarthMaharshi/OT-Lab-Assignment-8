@@ -39,5 +39,23 @@ More local steps per round cut the communication rounds needed (rounds to within
 
 Equal weights let the large-scale task win; raw MGDA does the opposite, because the min-norm point favours the smaller gradient, so a task with a big gradient barely trains. Normalising the gradients (as in the MGDA literature) fixes that and gives the best mean, but this is a trade-off between tasks, not a universal winner. With a wider shared layer (4 hidden units) the tasks hardly conflicted and equal weighting was best (0.005 / 0.005), so these methods matter only when tasks truly compete.
 
+## Supplement: locality, synchronisation, communication, compression, hyper-parameter search
+`locality_sync.c` (C + OpenMP, `gcc -O2 -fopenmp`, measured) and `parallel_extras.py` (results in `results/parallel_extras.json`; formulas tested in `tests/test_extras.py`).
+
+| Topic (slide) | Measurement | Result |
+|---|---|---|
+| Loop order / spatial locality (PPT2 s19) | sum of a 4096x4096 array, row-wise vs column-wise | 0.015 s vs 0.836 s: **56x** (slide estimate 8x; prefetching and TLB effects add to it) |
+| Cache blocking (PPT2 s18) | 768x768 matrix multiply, naive vs 32x32 tiles (24 KB) | 1.40 s vs 0.20 s: **7.1x**, identical results |
+| False sharing (PPT2 s21) | 4 threads incrementing adjacent vs 64-byte-padded counters | 0.72 s vs 0.33 s: **2.2x** |
+| Synchronisation (PPT2 s23) | 1e7 additions, 4 threads | critical 0.249 s, atomic 0.269 s, **reduction 0.002 s**, serial 0.007 s |
+| Race condition (PPT2 s24) | 4 threads x 1e6 unsynchronised x = x + 1 | lost updates in **5 of 5** runs; worst result 1,129,712 of 4,000,000 |
+| Communication cost T = alpha + n/beta (PPT2 s26) | round trips over a process pipe | alpha about 48 us, beta about 854 MB/s (a rough model: mid-sized messages are faster than predicted); **100 x 100-byte messages vs one 10 KB message: 45x slower** (slide: 17.5x) |
+| Local SGD / communication rounds (PPT2 s27-28) | FedAvg with E local steps (above) | E=20 reaches the target in 9 rounds vs 36 for E=5 (IID) |
+| Top-k sparsification (PPT4 s15) | 8 simulated workers, logistic regression, 300 steps | dense loss 0.149; top-1% (2% of the volume) without error feedback 0.370, **with error feedback 0.148**; top-10% 0.210 / 0.149 |
+| Parallel hyper-parameter search (PPT4 s17-18) | SGD classifier, 81-point grid x 27 epochs | grid 0.71 s on 1 process vs 0.16 s on 8 (4.5x), best accuracy 0.777 (2187 epoch units); random 27 configs 0.771 (729); successive halving **0.758 with 108 epoch units** (20x cheaper than the grid) |
+| Model fit, ring all-reduce, layouts, Amdahl for training (PPT4 s8-16) | formulas, tested against the slides | 16 / 160 GB (1B / 10B params; 10B does not fit an 80 GB GPU), 700 MB and 70 ms per worker, 28 layouts on 64 GPUs, 4.71x |
+
+First-version mistakes caught here: a least-squares fit of the communication model gave a negative latency (fixed by fitting the latency from the smallest message), and the 1-process grid search was timed while its worker was still importing scikit-learn (47x "speedup"; fixed by warming up both pools).
+
 ## Limitations
 Single machine with logical processors; GradNorm used alpha=1.5 and a hand-picked weight learning rate; the two-task problem is synthetic; model and pipeline parallelism are not measured on real devices.

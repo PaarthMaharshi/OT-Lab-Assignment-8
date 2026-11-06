@@ -36,9 +36,16 @@ Everything except random is within noise of the exhaustive optimum (one test sam
 
 **Weighted interval scheduling.** DP equals ILP and brute force. Greedy earliest-finish (optimal for unweighted intervals) reaches only 75-84% of the weighted optimum; greedy-by-weight 47-100%.
 
+## Discrete choices in deep learning, hinge loss, L0 vs L1 (`dl_discrete.py`, `results/dl_discrete.json`)
+On Track A's two-moons MLP (16 hidden units, 5 seeds):
+- **Magnitude pruning** (keep the largest weights: a discrete selection). Without retraining accuracy collapses: 0.947 -> 0.706 (50% pruned) -> 0.37 (90%), even below chance, because the kept biases no longer fit. With masked fine-tuning (500 steps, pruned weights held at zero): 0.957 at 50%, 0.838 at 80%, 0.52 at 90%. A 49-weight network has little redundancy; the large savings on the slide assume big over-parameterised networks and retraining.
+- **int8 quantisation** (symmetric, per tensor): 0.9475 vs 0.947 accuracy at a quarter of the fp32 size.
+- **Architecture search** (hidden width 1-32): exhaustive best width 8 (0.944) with 6 trainings; greedy "grow while it improves" also found 8 with 5. (Scored on the test split for brevity; a real search would use a validation split.)
+- **Hinge vs logistic loss** (linear model): 0.855 vs 0.856 test accuracy; the loss choice barely matters for a linear boundary on this data.
+- **L0 vs L1:** the exhaustive k-subset search in the feature-selection experiment is L0-constrained selection (27,405 fits); the Lasso path is its convex L1 relaxation (28 fits) with equal test accuracy (0.967 vs 0.965).
+
 ## Limitations
 
 - Only Max-Cut and feature selection are written as QUBOs; scheduling or portfolio QUBOs are not done (the Track E tower-defense QUBO is still open).
-- Discrete choices in deep learning (architecture search, quantization, pruning, slide 28) are not experimented on, only listed in COVERAGE.md.
 - Feature-selection scores use one validation split per random split; the exhaustive search ran on split 0 only because it costs 2 minutes.
 - Branch-and-bound is a plain Python implementation with a node cap, not a tuned solver; its absolute times are not comparable to SCIP.
