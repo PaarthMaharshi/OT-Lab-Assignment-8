@@ -1,0 +1,730 @@
+{
+ "summary": {
+  "map": "snake 15x11",
+  "enemies": 40,
+  "total_enemy_hp": 2860.0,
+  "budget": 30,
+  "runs": 100,
+  "sim_seconds_total": 0.7251847000006819,
+  "damage": {
+   "mean": 1756.65,
+   "std": 954.3621574119544,
+   "min": 0.0,
+   "max": 2860.0
+  },
+  "leaked": {
+   "mean": 18.5,
+   "std": 13.400373129133383,
+   "min": 0,
+   "max": 40
+  },
+  "surrogate": {
+   "mean": 2484.0,
+   "std": 960.4998698594394,
+   "min": 0.0,
+   "max": 2860.0
+  }
+ },
+ "rows": [
+  {
+   "seed": 0,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 1,
+   "damage": 775.0,
+   "leaked": 35,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 2,
+   "damage": 2092.0,
+   "leaked": 16,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 3,
+   "damage": 985.0,
+   "leaked": 30,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 4,
+   "damage": 2600.0,
+   "leaked": 6,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 5,
+   "damage": 1320.0,
+   "leaked": 24,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 6,
+   "damage": 1848.0,
+   "leaked": 22,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 7,
+   "damage": 970.0,
+   "leaked": 32,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 8,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 9,
+   "damage": 2850.0,
+   "leaked": 1,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 10,
+   "damage": 855.0,
+   "leaked": 35,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 11,
+   "damage": 1760.0,
+   "leaked": 20,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 12,
+   "damage": 2828.0,
+   "leaked": 2,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 13,
+   "damage": 1270.0,
+   "leaked": 27,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 14,
+   "damage": 605.0,
+   "leaked": 37,
+   "surrogate": 2720.0,
+   "towers": 2
+  },
+  {
+   "seed": 15,
+   "damage": 2536.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 16,
+   "damage": 1445.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 17,
+   "damage": 2804.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 18,
+   "damage": 930.0,
+   "leaked": 32,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 19,
+   "damage": 2248.0,
+   "leaked": 15,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 20,
+   "damage": 2436.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 21,
+   "damage": 1020.0,
+   "leaked": 30,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 22,
+   "damage": 2288.0,
+   "leaked": 12,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 23,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 24,
+   "damage": 995.0,
+   "leaked": 32,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 25,
+   "damage": 2816.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 26,
+   "damage": 1185.0,
+   "leaked": 25,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 27,
+   "damage": 1540.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 28,
+   "damage": 2470.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 29,
+   "damage": 1904.0,
+   "leaked": 17,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 30,
+   "damage": 1170.0,
+   "leaked": 29,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 31,
+   "damage": 2520.0,
+   "leaked": 10,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 32,
+   "damage": 2405.0,
+   "leaked": 8,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 33,
+   "damage": 2372.0,
+   "leaked": 9,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 34,
+   "damage": 2792.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 35,
+   "damage": 2640.0,
+   "leaked": 6,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 36,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 37,
+   "damage": 1776.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 38,
+   "damage": 1605.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 39,
+   "damage": 1310.0,
+   "leaked": 27,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 40,
+   "damage": 2816.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 41,
+   "damage": 2855.0,
+   "leaked": 1,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 42,
+   "damage": 995.0,
+   "leaked": 30,
+   "surrogate": 2720.0,
+   "towers": 2
+  },
+  {
+   "seed": 43,
+   "damage": 1325.0,
+   "leaked": 26,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 44,
+   "damage": 2784.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 45,
+   "damage": 2620.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 46,
+   "damage": 1904.0,
+   "leaked": 17,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 47,
+   "damage": 2804.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 48,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 49,
+   "damage": 1215.0,
+   "leaked": 24,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 50,
+   "damage": 1450.0,
+   "leaked": 24,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 51,
+   "damage": 2772.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 52,
+   "damage": 2620.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 53,
+   "damage": 2800.0,
+   "leaked": 2,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 54,
+   "damage": 2288.0,
+   "leaked": 12,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 55,
+   "damage": 1776.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 56,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 57,
+   "damage": 2248.0,
+   "leaked": 15,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 58,
+   "damage": 2520.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 59,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 60,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 61,
+   "damage": 2816.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 62,
+   "damage": 2484.0,
+   "leaked": 8,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 63,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 64,
+   "damage": 2810.0,
+   "leaked": 2,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 65,
+   "damage": 2860.0,
+   "leaked": 0,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 66,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 67,
+   "damage": 2495.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 68,
+   "damage": 1395.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 69,
+   "damage": 705.0,
+   "leaked": 35,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 70,
+   "damage": 2324.0,
+   "leaked": 16,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 71,
+   "damage": 1000.0,
+   "leaked": 31,
+   "surrogate": 2720.0,
+   "towers": 2
+  },
+  {
+   "seed": 72,
+   "damage": 1904.0,
+   "leaked": 17,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 73,
+   "damage": 2680.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 74,
+   "damage": 2816.0,
+   "leaked": 3,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 75,
+   "damage": 2740.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 76,
+   "damage": 2788.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 77,
+   "damage": 1220.0,
+   "leaked": 26,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 78,
+   "damage": 2555.0,
+   "leaked": 6,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 79,
+   "damage": 2680.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 80,
+   "damage": 1290.0,
+   "leaked": 26,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 81,
+   "damage": 2820.0,
+   "leaked": 2,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 82,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 83,
+   "damage": 2680.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 84,
+   "damage": 1325.0,
+   "leaked": 26,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 85,
+   "damage": 2520.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 86,
+   "damage": 2364.0,
+   "leaked": 14,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 87,
+   "damage": 1005.0,
+   "leaked": 31,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 88,
+   "damage": 1005.0,
+   "leaked": 32,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 89,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 90,
+   "damage": 2536.0,
+   "leaked": 5,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 91,
+   "damage": 0.0,
+   "leaked": 40,
+   "surrogate": 0.0,
+   "towers": 2
+  },
+  {
+   "seed": 92,
+   "damage": 2708.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 93,
+   "damage": 1300.0,
+   "leaked": 24,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 94,
+   "damage": 2505.0,
+   "leaked": 7,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 95,
+   "damage": 1635.0,
+   "leaked": 22,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 96,
+   "damage": 2788.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 1
+  },
+  {
+   "seed": 97,
+   "damage": 2785.0,
+   "leaked": 4,
+   "surrogate": 2860.0,
+   "towers": 3
+  },
+  {
+   "seed": 98,
+   "damage": 830.0,
+   "leaked": 35,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  {
+   "seed": 99,
+   "damage": 1540.0,
+   "leaked": 23,
+   "surrogate": 2860.0,
+   "towers": 2
+  }
+ ]
+}

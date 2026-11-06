@@ -1,0 +1,206 @@
+[
+ {
+  "wave_seed": 0,
+  "budget": 20,
+  "total_hp": 2860.0,
+  "random": {
+   "damage_mean": 1048.25,
+   "damage_std": 1069.335629023928,
+   "leaked_mean": 27.87
+  },
+  "greedy": {
+   "damage": 2335.0,
+   "leaked": 10,
+   "seconds": 0.45248110000102315,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2555.0,
+   "leaked": 7,
+   "seconds": 2.5463850000014645,
+   "surrogate": 2860.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2564.0,
+   "damage_std": 5.830951894845301,
+   "damage_best": 2570.0,
+   "leaked_mean": 6.2,
+   "seconds_mean": 7.454305339999701,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "wave_seed": 0,
+  "budget": 30,
+  "total_hp": 2860.0,
+  "random": {
+   "damage_mean": 1756.65,
+   "damage_std": 954.3621574119544,
+   "leaked_mean": 18.5
+  },
+  "greedy": {
+   "damage": 2335.0,
+   "leaked": 10,
+   "seconds": 1.0115290000030654,
+   "surrogate": 2860.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2640.0,
+   "leaked": 6,
+   "seconds": 2.6786456999980146,
+   "surrogate": 2860.0,
+   "proven_optimal": true,
+   "towers": 1
+  },
+  "anneal": {
+   "damage_mean": 2847.2,
+   "damage_std": 15.67673435381234,
+   "damage_best": 2860.0,
+   "leaked_mean": 0.8,
+   "seconds_mean": 9.165281719999621,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "wave_seed": 1,
+  "budget": 20,
+  "total_hp": 2660.0,
+  "random": {
+   "damage_mean": 881.55,
+   "damage_std": 899.675968057389,
+   "leaked_mean": 29.92
+  },
+  "greedy": {
+   "damage": 2165.0,
+   "leaked": 13,
+   "seconds": 0.4323733999990509,
+   "surrogate": 2660.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2180.0,
+   "leaked": 12,
+   "seconds": 1.1752718999996432,
+   "surrogate": 2660.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2193.0,
+   "damage_std": 16.0,
+   "damage_best": 2205.0,
+   "leaked_mean": 13,
+   "seconds_mean": 8.934922260000167,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "wave_seed": 1,
+  "budget": 30,
+  "total_hp": 2660.0,
+  "random": {
+   "damage_mean": 1534.39,
+   "damage_std": 849.3464651718991,
+   "leaked_mean": 20.47
+  },
+  "greedy": {
+   "damage": 2165.0,
+   "leaked": 13,
+   "seconds": 0.8836816999973962,
+   "surrogate": 2660.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2172.0,
+   "leaked": 15,
+   "seconds": 2.4700019000010798,
+   "surrogate": 2660.0,
+   "proven_optimal": true,
+   "towers": 1
+  },
+  "anneal": {
+   "damage_mean": 2605.2,
+   "damage_std": 46.739276845068964,
+   "damage_best": 2645.0,
+   "leaked_mean": 1.8,
+   "seconds_mean": 14.226996099999814,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "wave_seed": 2,
+  "budget": 20,
+  "total_hp": 3440.0,
+  "random": {
+   "damage_mean": 1072.6,
+   "damage_std": 1098.2742098401473,
+   "leaked_mean": 29.93
+  },
+  "greedy": {
+   "damage": 2810.0,
+   "leaked": 11,
+   "seconds": 0.4669280999987677,
+   "surrogate": 3255.0,
+   "towers": 2
+  },
+  "ilp": {
+   "damage": 2810.0,
+   "leaked": 11,
+   "seconds": 1.0705922000015562,
+   "surrogate": 3255.0,
+   "proven_optimal": true,
+   "towers": 2
+  },
+  "anneal": {
+   "damage_mean": 2811.0,
+   "damage_std": 29.0516780926679,
+   "damage_best": 2830.0,
+   "leaked_mean": 11.4,
+   "seconds_mean": 10.923634699998365,
+   "evals": 800,
+   "runs": 5
+  }
+ },
+ {
+  "wave_seed": 2,
+  "budget": 30,
+  "total_hp": 3440.0,
+  "random": {
+   "damage_mean": 1863.59,
+   "damage_std": 1063.4727273889068,
+   "leaked_mean": 21
+  },
+  "greedy": {
+   "damage": 3200.0,
+   "leaked": 3,
+   "seconds": 0.9113124999967113,
+   "surrogate": 3440.0,
+   "towers": 3
+  },
+  "ilp": {
+   "damage": 3325.0,
+   "leaked": 1,
+   "seconds": 6.096430199999304,
+   "surrogate": 3440.0,
+   "proven_optimal": true,
+   "towers": 3
+  },
+  "anneal": {
+   "damage_mean": 3297.2,
+   "damage_std": 105.74384142823638,
+   "damage_best": 3390.0,
+   "leaked_mean": 1.4,
+   "seconds_mean": 10.44865276000055,
+   "evals": 800,
+   "runs": 5
+  }
+ }
+]
