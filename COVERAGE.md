@@ -7,19 +7,19 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 
 | Topic | Source | Track | Code | Result | Status |
 |---|---|---|---|---|---|
-| ML as optimization (parameters, loss, regularization L0/L1/L2) | PPT1 s5, s27 | A | | | TODO |
-| Loss functions (MSE, cross-entropy, hinge) | PPT1 s4 | A | | | TODO |
-| Convex vs non-convex landscape, local/global minima, saddle point (each on a small example) | PPT1 s6-7 | A | | | TODO |
-| Gradient descent, learning-rate sensitivity | PPT1 s8-9 | A | | | TODO |
-| SGD and mini-batch SGD (noisy objective) | PPT1 s10 | A | | | TODO |
-| Backpropagation (distinct from optimizer) | PPT1 s11-12 | A | | | TODO |
-| Momentum, Nesterov (NAG) | PPT1 s14-15 | A | | | TODO |
-| AdaGrad, RMSProp, Adam | PPT1 s16-18 | A | | | TODO |
-| Newton's method | PPT1 s19 | A | | | TODO |
-| Gauss-Newton | PDF | A | | | TODO |
-| Curvature approximations (Fisher, diagonal/low-rank, Hessian-vector products) | PDF (PPT1 s35 research only) | A | | | TODO |
-| Convergence: convex O(1/k), strongly convex linear, non-convex stationary | PPT1 s20 | A | | | TODO |
-| Optimizer / step-size tuning | PPT1 s21 | A | | | TODO |
+| ML as optimization (parameters, loss, regularization L0/L1/L2) | PPT1 s5, s27 | tracks/A_continuous/problems.py; exp4 (L2 sweep) | exp4 | WIP |
+| Loss functions (MSE, cross-entropy, hinge) | PPT1 s4 | problems.py: cross-entropy (logistic, MLP); MSE in exp7 | partial: hinge not run | WIP |
+| Convex vs non-convex landscape, local/global minima, saddle point (each on a small example) | PPT1 s6-7 | experiments.py exp1 | fig1 | WIP |
+| Gradient descent, learning-rate sensitivity | PPT1 s8-9 | optlib.gd; exp3; tests slide8/9 | fig3 | WIP |
+| SGD and mini-batch SGD (noisy objective) | PPT1 s10 | exp3, exp5 | fig5 | WIP |
+| Backpropagation (distinct from optimizer) | PPT1 s11-12 | problems.MLP.grad; exp4 | grad-check 8e-10 | WIP |
+| Momentum, Nesterov (NAG) | PPT1 s14-15 | optlib.momentum/nag; exp3 | tests slide14/15 | WIP |
+| AdaGrad, RMSProp, Adam | PPT1 s16-18 | optlib; exp3 | tests slide16-18 | WIP |
+| Newton's method | PPT1 s19 | optlib.newton; exp1, exp3 | tests slide19 | WIP |
+| Gauss-Newton | PDF | optlib.gauss_newton; exp7 | 6 iterations | WIP |
+| Curvature approximations (Fisher, diagonal/low-rank, Hessian-vector products) | PDF (PPT1 s35 research only) | exp6 | HVP, Fisher, rank-r, Newton-CG | WIP |
+| Convergence: convex O(1/k), strongly convex linear, non-convex stationary | PPT1 s20 | exp2 | fig2 | WIP |
+| Optimizer / step-size tuning | PPT1 s21 | exp3 (25-point grid) | fig3 | WIP |
 | Continuous vs discrete optimization | PPT1 s23 | A, B | | | TODO |
 | Greedy forward selection / backward elimination (feature selection) | PPT1 s24-25 | B | | | TODO |
 | ILP (knapsack), Branch-and-Bound | PPT1 s26 | B | | | TODO |

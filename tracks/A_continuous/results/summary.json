@@ -1,0 +1,403 @@
+{
+ "exp1_landscapes": {
+  "double_well": {
+   "-2.0": {
+    "end": -1.300839565941578,
+    "f": -3.51390503893479
+   },
+   "-0.5": {
+    "end": -1.3008395659415766,
+    "f": -3.5139050389347894
+   },
+   "0.5": {
+    "end": 1.1309011226299848,
+    "f": -1.070230181776154
+   },
+   "2.0": {
+    "end": 1.130901122629987,
+    "f": -1.0702301817761544
+   }
+  },
+  "saddle": {
+   "gd start (1,0)": {
+    "end": [
+     0.0,
+     0.0
+    ],
+    "f": 1.2302319221611222e-97,
+    "hessian_eigs": [
+     -2.0,
+     2.0
+    ],
+    "type": "saddle"
+   },
+   "gd start (1,1e-3)": {
+    "end": [
+     0.0,
+     1.4142
+    ],
+    "f": -0.9999999999999999,
+    "hessian_eigs": [
+     2.0,
+     4.0
+    ],
+    "type": "minimum"
+   },
+   "newton start (1,0.5)": {
+    "end": [
+     0.0,
+     0.0
+    ],
+    "f": 0.0,
+    "hessian_eigs": [
+     -2.0,
+     2.0
+    ],
+    "type": "saddle"
+   }
+  },
+  "convex": {
+   "all_reach_same_minimum": true
+  }
+ },
+ "exp2_convergence_theory": {
+  "strongly_convex": {
+   "bound": "f_k <= (1-mu/L)^(2k) f_0",
+   "max_ratio_f_over_bound": 1.0
+  },
+  "convex": {
+   "bound": "f_k - f* <= L|x0-x*|^2/(2k)",
+   "max_ratio_f_over_bound": 0.2568648985907896
+  },
+  "nonconvex": {
+   "bound": "min_k |grad| <= sqrt(2L(f0-f*)/K)",
+   "max_ratio": 0.4439728648568063,
+   "note": "only a stationary point is guaranteed, not a minimum"
+  }
+ },
+ "exp3_shootout": {
+  "quadratic_kappa100": {
+   "GD": {
+    "lr": 0.01778279410038923,
+    "final_subopt": 1.8642846859715686e-07,
+    "steps_to_1e-6": 257,
+    "seconds": 0.0009981000002881046
+   },
+   "Momentum": {
+    "lr": 0.005623413251903491,
+    "final_subopt": 1.2502790521762535e-12,
+    "steps_to_1e-6": 169,
+    "seconds": 0.0015021999970485922
+   },
+   "NAG": {
+    "lr": 0.01,
+    "final_subopt": 6.637147033336732e-17,
+    "steps_to_1e-6": 111,
+    "seconds": 0.002024699999310542
+   },
+   "AdaGrad": {
+    "lr": 10.0,
+    "final_subopt": 0.0,
+    "steps_to_1e-6": 8,
+    "seconds": 0.002065000000584405
+   },
+   "RMSProp": {
+    "lr": 0.01,
+    "final_subopt": 0.005481003213774649,
+    "steps_to_1e-6": null,
+    "seconds": 0.003175600002577994
+   },
+   "Adam": {
+    "lr": 0.1778279410038923,
+    "final_subopt": 8.153485108093236e-13,
+    "steps_to_1e-6": 175,
+    "seconds": 0.004502899999351939
+   },
+   "Newton": {
+    "lr": 1.0,
+    "final_subopt": 0.0,
+    "steps_to_1e-6": 1,
+    "seconds": 0.00018959999943035655
+   }
+  },
+  "rosenbrock_nonconvex": {
+   "GD": {
+    "lr": 0.0017782794100389228,
+    "final_subopt": 0.00013987240003431536,
+    "steps_to_1e-6": null
+   },
+   "Momentum": {
+    "lr": 0.0031622776601683794,
+    "final_subopt": 1.2449211160519093e-30,
+    "steps_to_1e-6": 394
+   },
+   "NAG": {
+    "lr": 0.001,
+    "final_subopt": 1.3842200208477835e-19,
+    "steps_to_1e-6": 1426
+   },
+   "AdaGrad": {
+    "lr": 1.7782794100389228,
+    "final_subopt": 1.0511399959374574e-05,
+    "steps_to_1e-6": null
+   },
+   "RMSProp": {
+    "lr": 0.001,
+    "final_subopt": 0.00031048214307039256,
+    "steps_to_1e-6": null
+   },
+   "Adam": {
+    "lr": 0.03162277660168379,
+    "final_subopt": 4.437342591868191e-31,
+    "steps_to_1e-6": 2208
+   },
+   "Newton": {
+    "lr": 1.0,
+    "final_subopt": 0.0,
+    "steps_to_1e-6": 5
+   }
+  },
+  "logistic_regression_30_epochs": {
+   "GD (full-batch)": {
+    "lr": 10.0,
+    "final_subopt_mean": 0.013353887515540563,
+    "final_subopt_std": 0.0,
+    "seconds": 0.001969299999473151
+   },
+   "GD (mini-batch 32)": {
+    "lr": 0.5623413251903491,
+    "final_subopt_mean": 0.0032742600493737457,
+    "final_subopt_std": 0.0009094525722618542,
+    "seconds": 0.05705211999957101
+   },
+   "Momentum (full-batch)": {
+    "lr": 3.1622776601683795,
+    "final_subopt_mean": 0.0028296026874241598,
+    "final_subopt_std": 0.0,
+    "seconds": 0.0020404999995662365
+   },
+   "Momentum (mini-batch 32)": {
+    "lr": 0.03162277660168379,
+    "final_subopt_mean": 0.003918856899089188,
+    "final_subopt_std": 0.000717179303377654,
+    "seconds": 0.05969399999958114
+   },
+   "NAG (full-batch)": {
+    "lr": 5.623413251903491,
+    "final_subopt_mean": 0.0008905046511695769,
+    "final_subopt_std": 0.0,
+    "seconds": 0.00221869999950286
+   },
+   "NAG (mini-batch 32)": {
+    "lr": 0.03162277660168379,
+    "final_subopt_mean": 0.0038673621613405226,
+    "final_subopt_std": 0.0006740991586055678,
+    "seconds": 0.06781577999936417
+   },
+   "AdaGrad (full-batch)": {
+    "lr": 1.0,
+    "final_subopt_mean": 5.844623673922911e-09,
+    "final_subopt_std": 0.0,
+    "seconds": 0.0028206000024511013
+   },
+   "AdaGrad (mini-batch 32)": {
+    "lr": 0.1,
+    "final_subopt_mean": 0.00046628110231798793,
+    "final_subopt_std": 0.00011232249190803073,
+    "seconds": 0.06965980000095442
+   },
+   "RMSProp (full-batch)": {
+    "lr": 0.1,
+    "final_subopt_mean": 0.0006925307610231579,
+    "final_subopt_std": 0.0,
+    "seconds": 0.003703700000187382
+   },
+   "RMSProp (mini-batch 32)": {
+    "lr": 0.005623413251903491,
+    "final_subopt_mean": 0.0006984255670823201,
+    "final_subopt_std": 0.00024962575894364985,
+    "seconds": 0.0725287000008393
+   },
+   "Adam (full-batch)": {
+    "lr": 0.1,
+    "final_subopt_mean": 0.0012264434554213333,
+    "final_subopt_std": 0.0,
+    "seconds": 0.002484500000718981
+   },
+   "Adam (mini-batch 32)": {
+    "lr": 0.005623413251903491,
+    "final_subopt_mean": 0.0007174001079830556,
+    "final_subopt_std": 0.00026627977164042237,
+    "seconds": 0.082742860000144
+   },
+   "Newton (full-batch, 8 steps)": {
+    "lr": 1.0,
+    "final_subopt_mean": 0.0,
+    "final_subopt_std": 0.0,
+    "seconds": 0.0040666000022611115
+   }
+  }
+ },
+ "exp4_backprop_mlp": {
+  "gradient_check_max_rel_err": 8.134831765377029e-10,
+  "training_100_epochs": {
+   "GD full-batch": {
+    "lr": 5.623413251903491,
+    "train_loss_mean": 0.09872024198020998,
+    "train_loss_std": 0.025606744832698772,
+    "test_acc_mean": 0.9545,
+    "test_acc_std": 0.015684387141358117
+   },
+   "SGD bs32": {
+    "lr": 1.7782794100389228,
+    "train_loss_mean": 0.0851091381653254,
+    "train_loss_std": 0.013755832112184322,
+    "test_acc_mean": 0.96,
+    "test_acc_std": 0.008803408430829494
+   },
+   "Adam bs32": {
+    "lr": 0.03162277660168379,
+    "train_loss_mean": 0.0750552579889197,
+    "train_loss_std": 0.018838060622633615,
+    "test_acc_mean": 0.9654999999999999,
+    "test_acc_std": 0.009137833441248518
+   }
+  },
+  "l2_regularisation_adam": {
+   "0.0": {
+    "test_acc": 0.9616666666666668,
+    "weight_norm": 18.39145654307639,
+    "data_loss": 0.07720530854457562
+   },
+   "0.001": {
+    "test_acc": 0.9525,
+    "weight_norm": 13.043701364224525,
+    "data_loss": 0.10257064479476942
+   },
+   "0.01": {
+    "test_acc": 0.8516666666666667,
+    "weight_norm": 4.0300964588632695,
+    "data_loss": 0.31374730363151176
+   },
+   "0.1": {
+    "test_acc": 0.8233333333333333,
+    "weight_norm": 2.335444280191627,
+    "data_loss": 0.4288587790965989
+   }
+  }
+ },
+ "exp5_noisy_objective": {
+  "eta0": 3.84135240211882,
+  "epochs": 20,
+  "rows": {
+   "bs=1 constant": {
+    "noise_floor_mean": 1.7857167163822794,
+    "std": 0.03268703061727771
+   },
+   "bs=1 decay": {
+    "noise_floor_mean": 0.06704566112706807,
+    "std": 0.002368065582912837
+   },
+   "bs=8 constant": {
+    "noise_floor_mean": 0.12024598891995857,
+    "std": 0.004158871405990354
+   },
+   "bs=8 decay": {
+    "noise_floor_mean": 0.00691627900256409,
+    "std": 0.0009326979201965549
+   },
+   "bs=64 constant": {
+    "noise_floor_mean": 0.011929695752825022,
+    "std": 0.0008255875625682343
+   },
+   "bs=64 decay": {
+    "noise_floor_mean": 0.003055438289452376,
+    "std": 0.0001573770774735932
+   },
+   "bs=2000 constant": {
+    "noise_floor_mean": 0.030196296585937553,
+    "std": 0.000284541501369691
+   },
+   "bs=2000 decay": {
+    "noise_floor_mean": 0.07845755505832762,
+    "std": 0.00027851565983735024
+   }
+  }
+ },
+ "exp6_curvature": {
+  "hvp": {
+   "exact_matrix_free_err": 3.1885004495515073e-16,
+   "finite_difference_err": 2.0275186498128585e-10,
+   "cost": "2 gradient calls, O(nd), no d x d matrix formed"
+  },
+  "low_rank_hessian": {
+   "rel_frobenius_error_by_rank": {
+    "1": 0.6970798996317421,
+    "2": 0.4989466002736122,
+    "3": 0.35303031383563394,
+    "5": 0.1925033050598235,
+    "10": 0.04749057817263995
+   },
+   "condition_number": 138.60841581108255,
+   "top5_eig_via_HVP_only_matches_eigh": true
+  },
+  "fisher": {
+   "true_fisher_vs_hessian_at_optimum": 0.0,
+   "empirical_fisher_vs_hessian_at_optimum": 0.11739292039615856,
+   "empirical_fisher_vs_hessian_far_from_optimum": 0.954185208617336
+  },
+  "steps_to_f-f*<1e-10 (None = not reached in 5000)": {
+   "Newton (exact Hessian)": {
+    "steps": 4,
+    "cost_note": "d x d solve each step"
+   },
+   "Newton-CG (HVP only)": {
+    "steps": 4,
+    "hvp_calls": 539
+   },
+   "Natural gradient (true Fisher + lam I)": {
+    "steps": 4,
+    "same_iterates_as_Newton": true
+   },
+   "Diagonal-Fisher preconditioned GD": {
+    "steps": 619,
+    "final_subopt": 0.0
+   },
+   "GD (tuned lr)": {
+    "steps": 1938,
+    "lr": 3.1622776601683795,
+    "final_subopt": 0.0
+   },
+   "Adam (tuned lr)": {
+    "steps": 3072,
+    "lr": 0.0031622776601683794,
+    "final_subopt": -1.1102230246251565e-16
+   }
+  }
+ },
+ "exp7_gauss_newton": {
+  "problem": "fit y=a*exp(b t), truth (2,-0.8), noise 0.05",
+  "fitted": [
+   2.0032,
+   -0.8089
+  ],
+  "rows": {
+   "Gauss-Newton": {
+    "iterations_to_grad<1e-8": 6,
+    "final_cost_minus_best": 0.0
+   },
+   "Levenberg-Marquardt (lm=1e-2)": {
+    "iterations_to_grad<1e-8": 6,
+    "final_cost_minus_best": 0.0
+   },
+   "Newton (full Hessian)": {
+    "iterations_to_grad<1e-8": 4,
+    "final_cost_minus_best": 0.0
+   },
+   "GD 2000 steps (lr=0.0562)": {
+    "iterations_to_grad<1e-8": 91,
+    "final_cost_minus_best": -3.8163916471489756e-17
+   }
+  }
+ }
+}
