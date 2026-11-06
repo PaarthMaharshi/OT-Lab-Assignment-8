@@ -1,0 +1,165 @@
+{
+ "share": {
+  "round robin": {
+   "tickets=30": {
+    "cpu_share_mean": 0.332488011020392,
+    "std": 0.0016533407808684087
+   },
+   "tickets=20": {
+    "cpu_share_mean": 0.3347317068457084,
+    "std": 0.0016889325333938378
+   },
+   "tickets=10": {
+    "cpu_share_mean": 0.3327802821338996,
+    "std": 0.0012214432112936816
+   },
+   "max_abs_error_vs_ticket_proportional": 0.167511988979608
+  },
+  "lottery": {
+   "tickets=30": {
+    "cpu_share_mean": 0.4924392671825522,
+    "std": 0.002818694818272137
+   },
+   "tickets=20": {
+    "cpu_share_mean": 0.33646185378737214,
+    "std": 0.004014311108974453
+   },
+   "tickets=10": {
+    "cpu_share_mean": 0.1710988790300757,
+    "std": 0.0013059823570360065
+   },
+   "max_abs_error_vs_ticket_proportional": 0.007560732817447791
+  },
+  "MLFQ": {
+   "tickets=30": {
+    "cpu_share_mean": 0.343069728802503,
+    "std": 0.003236047104150818
+   },
+   "tickets=20": {
+    "cpu_share_mean": 0.32071160659191084,
+    "std": 0.010904790960883683
+   },
+   "tickets=10": {
+    "cpu_share_mean": 0.33621866460558614,
+    "std": 0.012450333205188525
+   },
+   "max_abs_error_vs_ticket_proportional": 0.16955199793891948
+  }
+ },
+ "mixed": {
+  "round robin": {
+   "interactive_iterations": [
+    288,
+    298,
+    299
+   ],
+   "mean_wakeup_delay_ticks": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "max_wakeup_delay_ticks": [
+    1,
+    0,
+    0
+   ]
+  },
+  "lottery": {
+   "interactive_iterations": [
+    148,
+    147,
+    149
+   ],
+   "mean_wakeup_delay_ticks": [
+    2.0,
+    1.97,
+    2.01
+   ],
+   "max_wakeup_delay_ticks": [
+    11,
+    11,
+    11
+   ]
+  },
+  "MLFQ": {
+   "interactive_iterations": [
+    283,
+    299,
+    299
+   ],
+   "mean_wakeup_delay_ticks": [
+    0.02,
+    0.0,
+    0.0
+   ],
+   "max_wakeup_delay_ticks": [
+    1,
+    1,
+    1
+   ]
+  }
+ },
+ "jobs": {
+  "round robin": {
+   "mean_turnaround_ticks": [
+    132.0,
+    90.8,
+    93.6
+   ],
+   "mean_response_ticks": [
+    2.5,
+    2.5,
+    2.5
+   ],
+   "makespan_ticks": [
+    202,
+    140,
+    142
+   ]
+  },
+  "lottery": {
+   "mean_turnaround_ticks": [
+    139.1,
+    99.0,
+    103.0
+   ],
+   "mean_response_ticks": [
+    2.5,
+    2.5,
+    2.5
+   ],
+   "makespan_ticks": [
+    203,
+    141,
+    141
+   ],
+   "turnaround_vs_round_robin_same_boot": [
+    1.0537878787878787,
+    1.0903083700440528,
+    1.1004273504273505
+   ]
+  },
+  "MLFQ": {
+   "mean_turnaround_ticks": [
+    130.1,
+    89.8,
+    87.5
+   ],
+   "mean_response_ticks": [
+    2.5,
+    2.5,
+    2.5
+   ],
+   "makespan_ticks": [
+    207,
+    143,
+    141
+   ],
+   "turnaround_vs_round_robin_same_boot": [
+    0.9856060606060606,
+    0.9889867841409692,
+    0.9348290598290598
+   ]
+  }
+ }
+}

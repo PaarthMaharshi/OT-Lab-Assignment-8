@@ -1,0 +1,1028 @@
+[
+ {
+  "rep": 0,
+  "policy": 0,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "share",
+    "iters_per_tick": "3143000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "512290",
+    "cpu_ticks": "63",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "510030",
+    "cpu_ticks": "54",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "507880",
+    "cpu_ticks": "57",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 1,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "share",
+    "iters_per_tick": "3718000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "746570",
+    "cpu_ticks": "93",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "516360",
+    "cpu_ticks": "64",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "258020",
+    "cpu_ticks": "25",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 2,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "share",
+    "iters_per_tick": "3762000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "512120",
+    "cpu_ticks": "45",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "481170",
+    "cpu_ticks": "50",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "519230",
+    "cpu_ticks": "56",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 0,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "mixed",
+    "iters_per_tick": "3705000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "288",
+    "mean_wakeup_delay_x100": "0",
+    "max_delay": "1",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 1,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "mixed",
+    "iters_per_tick": "3632000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "148",
+    "mean_wakeup_delay_x100": "200",
+    "max_delay": "11",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 2,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "mixed",
+    "iters_per_tick": "3662000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "283",
+    "mean_wakeup_delay_x100": "2",
+    "max_delay": "1",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 0,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "jobs",
+    "iters_per_tick": "3686000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "42",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "72",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "124",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "163",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "189",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "202",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "1320",
+    "mean_response_x10": "25",
+    "makespan": "202",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 1,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "jobs",
+    "iters_per_tick": "3543000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "37",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "116",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "124",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "169",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "186",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "203",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "1391",
+    "mean_response_x10": "25",
+    "makespan": "203",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 0,
+  "policy": 2,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "jobs",
+    "iters_per_tick": "3676000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "27",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "68",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "125",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "162",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "192",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "207",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "1301",
+    "mean_response_x10": "25",
+    "makespan": "207",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 1,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "share",
+    "iters_per_tick": "5038000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "1063820",
+    "cpu_ticks": "133",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "736110",
+    "cpu_ticks": "86",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "370860",
+    "cpu_ticks": "42",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 2,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "share",
+    "iters_per_tick": "5271000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "733120",
+    "cpu_ticks": "102",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "709950",
+    "cpu_ticks": "93",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "675100",
+    "cpu_ticks": "83",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 0,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "share",
+    "iters_per_tick": "4701000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "673990",
+    "cpu_ticks": "90",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "686490",
+    "cpu_ticks": "96",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "675950",
+    "cpu_ticks": "90",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 1,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "mixed",
+    "iters_per_tick": "3928000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "147",
+    "mean_wakeup_delay_x100": "197",
+    "max_delay": "11",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 2,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "mixed",
+    "iters_per_tick": "4851000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "299",
+    "mean_wakeup_delay_x100": "0",
+    "max_delay": "1",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 0,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "mixed",
+    "iters_per_tick": "5060000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "298",
+    "mean_wakeup_delay_x100": "0",
+    "max_delay": "0",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 1,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "jobs",
+    "iters_per_tick": "5284000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "32",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "85",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "77",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "127",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "141",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "132",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "990",
+    "mean_response_x10": "25",
+    "makespan": "141",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 2,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "jobs",
+    "iters_per_tick": "5137000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "25",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "47",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "78",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "114",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "132",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "143",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "898",
+    "mean_response_x10": "25",
+    "makespan": "143",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 1,
+  "policy": 0,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "jobs",
+    "iters_per_tick": "5215000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "24",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "49",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "86",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "113",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "133",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "140",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "908",
+    "mean_response_x10": "25",
+    "makespan": "140",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 2,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "share",
+    "iters_per_tick": "5226000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "744590",
+    "cpu_ticks": "88",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "667490",
+    "cpu_ticks": "79",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "749210",
+    "cpu_ticks": "88",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 0,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "share",
+    "iters_per_tick": "5215000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "725980",
+    "cpu_ticks": "94",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "730510",
+    "cpu_ticks": "96",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "732100",
+    "cpu_ticks": "79",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 1,
+  "workload": "share",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "share",
+    "iters_per_tick": "5087000",
+    "_kind": "begin"
+   },
+   {
+    "tickets": "30",
+    "iters_k": "1075200",
+    "cpu_ticks": "133",
+    "_kind": "share"
+   },
+   {
+    "tickets": "20",
+    "iters_k": "716490",
+    "cpu_ticks": "95",
+    "_kind": "share"
+   },
+   {
+    "tickets": "10",
+    "iters_k": "374310",
+    "cpu_ticks": "45",
+    "_kind": "share"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 2,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "mixed",
+    "iters_per_tick": "5168000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "299",
+    "mean_wakeup_delay_x100": "0",
+    "max_delay": "1",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 0,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "mixed",
+    "iters_per_tick": "5215000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "299",
+    "mean_wakeup_delay_x100": "0",
+    "max_delay": "0",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 1,
+  "workload": "mixed",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "mixed",
+    "iters_per_tick": "5182000",
+    "_kind": "begin"
+   },
+   {
+    "interactive_iterations": "149",
+    "mean_wakeup_delay_x100": "201",
+    "max_delay": "11",
+    "_kind": "mixed"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 2,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "2",
+    "workload": "jobs",
+    "iters_per_tick": "5272000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "24",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "46",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "77",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "111",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "126",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "141",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "875",
+    "mean_response_x10": "25",
+    "makespan": "141",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 0,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "0",
+    "workload": "jobs",
+    "iters_per_tick": "5309000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "30",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "50",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "90",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "117",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "133",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "142",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "936",
+    "mean_response_x10": "25",
+    "makespan": "142",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ },
+ {
+  "rep": 2,
+  "policy": 1,
+  "workload": "jobs",
+  "rows": [
+   {
+    "policy": "1",
+    "workload": "jobs",
+    "iters_per_tick": "5176000",
+    "_kind": "begin"
+   },
+   {
+    "len": "10",
+    "response": "0",
+    "turnaround": "30",
+    "_kind": "job"
+   },
+   {
+    "len": "20",
+    "response": "1",
+    "turnaround": "87",
+    "_kind": "job"
+   },
+   {
+    "len": "40",
+    "response": "2",
+    "turnaround": "83",
+    "_kind": "job"
+   },
+   {
+    "len": "60",
+    "response": "3",
+    "turnaround": "136",
+    "_kind": "job"
+   },
+   {
+    "len": "80",
+    "response": "4",
+    "turnaround": "141",
+    "_kind": "job"
+   },
+   {
+    "len": "100",
+    "response": "5",
+    "turnaround": "141",
+    "_kind": "job"
+   },
+   {
+    "mean_turnaround_x10": "1030",
+    "mean_response_x10": "25",
+    "makespan": "141",
+    "_kind": "jobs_summary"
+   },
+   {
+    "_kind": "done"
+   }
+  ]
+ }
+]

@@ -1,0 +1,631 @@
+diff --git a/Makefile b/Makefile
+index a26f3db..827f135 100644
+--- a/Makefile
++++ b/Makefile
+@@ -132,6 +132,8 @@ mkfs/mkfs: mkfs/mkfs.c $K/fs.h $K/param.h
+ 
+ UPROGS=\
+ 	$U/_cat\
++	$U/_schedbench\
++	$U/_setpolicy\
+ 	$U/_echo\
+ 	$U/_forktest\
+ 	$U/_grep\
+diff --git a/kernel/proc.c b/kernel/proc.c
+index 31f23a3..6c2401e 100644
+--- a/kernel/proc.c
++++ b/kernel/proc.c
+@@ -13,6 +13,11 @@ struct proc proc[NPROC];
+ struct proc *initproc;
+ 
+ int nextpid = 1;
++
++// Track G: scheduling policy, switchable at run time with setsched().
++//   0 = round robin (the original xv6 loop), 1 = lottery, 2 = MLFQ (3 levels, slices 1/2/4 ticks, boost every 50 ticks)
++int sched_policy = 0;
++extern uint ticks;
+ struct spinlock pid_lock;
+ 
+ extern void forkret(void);
+@@ -123,6 +128,11 @@ allocproc(void)
+ 
+ found:
+   p->pid = allocpid();
++  p->tickets = 1;
++  p->level = 0;
++  p->qticks = 0;
++  p->rticks = 0;
++  p->nsched = 0;
+   p->state = USED;
+ 
+   // Allocate a trapframe page.
+@@ -418,6 +428,103 @@ kwait(uint64 addr)
+   }
+ }
+ 
++// ---- Track G: scheduling policies ----
++#include "pstat.h"
++
++static uint64 rngstate = 88172645463325252ULL;
++
++// xorshift64: small deterministic PRNG for the lottery scheduler
++static uint
++sched_rand(void)
++{
++  rngstate ^= rngstate << 13;
++  rngstate ^= rngstate >> 7;
++  rngstate ^= rngstate << 17;
++  return (uint)(rngstate >> 32);
++}
++
++// Fill a snapshot of scheduling statistics (used by getpinfo).
++int
++fill_pstat(struct pstat *st)
++{
++  for (int i = 0; i < NPROC; i++) {
++    struct proc *p = &proc[i];
++    acquire(&p->lock);
++    st->inuse[i] = p->state != UNUSED;
++    st->pid[i] = p->pid;
++    st->tickets[i] = p->tickets;
++    st->level[i] = p->level;
++    st->rticks[i] = p->rticks;
++    st->nsched[i] = p->nsched;
++    release(&p->lock);
++  }
++  return 0;
++}
++
++// Choose the next process for policy 1 (lottery) or 2 (MLFQ).
++// Returns with the chosen process's lock held and state RUNNABLE, or 0 if nothing can run.
++// (Written for one CPU: it does not try to stay consistent if another CPU steals a process.)
++static struct proc *
++pick_proc(void)
++{
++  struct proc *p;
++  if (sched_policy == 1) {
++    for (;;) {
++      int total = 0;
++      for (p = proc; p < &proc[NPROC]; p++) {
++        acquire(&p->lock);
++        if (p->state == RUNNABLE)
++          total += p->tickets;
++        release(&p->lock);
++      }
++      if (total == 0)
++        return 0;
++      int winner = sched_rand() % total, acc = 0;
++      for (p = proc; p < &proc[NPROC]; p++) {
++        acquire(&p->lock);
++        if (p->state == RUNNABLE) {
++          acc += p->tickets;
++          if (acc > winner)
++            return p;
++        }
++        release(&p->lock);
++      }
++    }
++  }
++  // MLFQ: periodically boost everyone to the top queue (prevents starvation)
++  static uint last_boost = 0;
++  if (ticks - last_boost >= 50) {
++    for (p = proc; p < &proc[NPROC]; p++) {
++      acquire(&p->lock);
++      p->level = 0;
++      p->qticks = 0;
++      release(&p->lock);
++    }
++    last_boost = ticks;
++  }
++  int best = 99;
++  for (p = proc; p < &proc[NPROC]; p++) {
++    acquire(&p->lock);
++    if (p->state == RUNNABLE && p->level < best)
++      best = p->level;
++    release(&p->lock);
++  }
++  if (best == 99)
++    return 0;
++  static int last = 0;
++  for (int i = 1; i <= NPROC; i++) {                 // round robin inside the chosen level
++    int idx = (last + i) % NPROC;
++    p = &proc[idx];
++    acquire(&p->lock);
++    if (p->state == RUNNABLE && p->level == best) {
++      last = idx;
++      return p;
++    }
++    release(&p->lock);
++  }
++  return 0;
++}
++
+ // Per-CPU process scheduler.
+ // Each CPU calls scheduler() after setting itself up.
+ // Scheduler never returns.  It loops, doing:
+@@ -441,6 +548,22 @@ scheduler(void)
+     intr_on();
+     intr_off();
+ 
++    if (sched_policy != 0) {                     // Track G policies
++      p = pick_proc();
++      if (p) {
++        p->state = RUNNING;
++        p->nsched++;
++        c->proc = p;
++        swtch(&c->context, &p->context);
++        mycpu()->intena = 0;
++        c->proc = 0;
++        release(&p->lock);
++      } else {
++        asm volatile("wfi");
++      }
++      continue;
++    }
++
+     int found = 0;
+     for (p = proc; p < &proc[NPROC]; p++) {
+       acquire(&p->lock);
+diff --git a/kernel/proc.h b/kernel/proc.h
+index 5603697..87689fe 100644
+--- a/kernel/proc.h
++++ b/kernel/proc.h
+@@ -101,4 +101,11 @@ struct proc {
+   struct file *ofile[NOFILE];  // Open files
+   struct inode *cwd;           // Current directory
+   char name[16];               // Process name (debugging)
++
++  // scheduling (Track G): used by the lottery and MLFQ policies
++  int tickets;                 // lottery tickets (default 1)
++  int level;                   // MLFQ queue level 0 (highest) .. 2
++  int qticks;                  // timer ticks used in the current MLFQ slice
++  uint64 rticks;               // total timer ticks spent running (CPU time)
++  uint64 nsched;               // number of times the scheduler picked this process
+ };
+diff --git a/kernel/pstat.h b/kernel/pstat.h
+new file mode 100644
+index 0000000..304e7a3
+--- /dev/null
++++ b/kernel/pstat.h
+@@ -0,0 +1,14 @@
++#ifndef _PSTAT_H_
++#define _PSTAT_H_
++#define PSTAT_NPROC 64   // must equal NPROC in param.h
++
++// Snapshot of per-process scheduling statistics returned by getpinfo().
++struct pstat {
++  int inuse[PSTAT_NPROC];     // slot in use (state != UNUSED)
++  int pid[PSTAT_NPROC];
++  int tickets[PSTAT_NPROC];
++  int level[PSTAT_NPROC];     // MLFQ level
++  uint64 rticks[PSTAT_NPROC]; // timer ticks spent running
++  uint64 nsched[PSTAT_NPROC]; // times scheduled
++};
++#endif
+diff --git a/kernel/start.c b/kernel/start.c
+index 62cce19..6d03c42 100644
+--- a/kernel/start.c
++++ b/kernel/start.c
+@@ -62,5 +62,5 @@ timerinit()
+   w_mcounteren(r_mcounteren() | 2);
+ 
+   // ask for the very first timer interrupt.
+-  w_stimecmp(r_time() + 1000000);
++  w_stimecmp(r_time() + 100000);
+ }
+diff --git a/kernel/syscall.c b/kernel/syscall.c
+index 1800f20..f52c5f1 100644
+--- a/kernel/syscall.c
++++ b/kernel/syscall.c
+@@ -95,6 +95,9 @@ extern uint64 sys_getpid(void);
+ extern uint64 sys_sbrk(void);
+ extern uint64 sys_pause(void);
+ extern uint64 sys_uptime(void);
++extern uint64 sys_settickets(void);
++extern uint64 sys_setsched(void);
++extern uint64 sys_getpinfo(void);
+ extern uint64 sys_open(void);
+ extern uint64 sys_write(void);
+ extern uint64 sys_mknod(void);
+@@ -122,6 +125,9 @@ static uint64 (*syscalls[])(void) = {
+   [SYS_sbrk]    = sys_sbrk,
+   [SYS_pause]   = sys_pause,
+   [SYS_uptime]  = sys_uptime,
++  [SYS_settickets] = sys_settickets,
++  [SYS_setsched]   = sys_setsched,
++  [SYS_getpinfo]   = sys_getpinfo,
+   [SYS_open]    = sys_open,
+   [SYS_write]   = sys_write,
+   [SYS_mknod]   = sys_mknod,
+diff --git a/kernel/syscall.h b/kernel/syscall.h
+index 5a4a39f..94fc95b 100644
+--- a/kernel/syscall.h
++++ b/kernel/syscall.h
+@@ -21,3 +21,6 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_sync   22
++#define SYS_settickets 23
++#define SYS_setsched   24
++#define SYS_getpinfo   25
+diff --git a/kernel/sysproc.c b/kernel/sysproc.c
+index cd25557..06dc40a 100644
+--- a/kernel/sysproc.c
++++ b/kernel/sysproc.c
+@@ -110,3 +110,49 @@ sys_uptime(void)
+   release(&tickslock);
+   return xticks;
+ }
++
++// ---- Track G: scheduling system calls ----
++#include "pstat.h"
++extern int sched_policy;
++extern int fill_pstat(struct pstat *);
++static struct pstat kpstat;   // static: too big for the 4 KB kernel stack
++
++// settickets(n): give the calling process n lottery tickets (n >= 1).
++uint64
++sys_settickets(void)
++{
++  int n;
++  argint(0, &n);
++  if(n < 1)
++    return -1;
++  struct proc *p = myproc();
++  acquire(&p->lock);
++  p->tickets = n;
++  release(&p->lock);
++  return 0;
++}
++
++// setsched(policy): 0 = round robin (original xv6), 1 = lottery, 2 = MLFQ.
++uint64
++sys_setsched(void)
++{
++  int pol;
++  argint(0, &pol);
++  if(pol < 0 || pol > 2)
++    return -1;
++  sched_policy = pol;
++  return 0;
++}
++
++// getpinfo(struct pstat *): copy scheduling statistics of all processes to user space.
++uint64
++sys_getpinfo(void)
++{
++  uint64 addr;
++  argaddr(0, &addr);
++  fill_pstat(&kpstat);
++  struct proc *p = myproc();
++  if(copyout(p->pagetable, p->sz, addr, (char *)&kpstat, sizeof(kpstat)) < 0)
++    return -1;
++  return 0;
++}
+diff --git a/kernel/trap.c b/kernel/trap.c
+index 00e99bc..cf805f2 100644
+--- a/kernel/trap.c
++++ b/kernel/trap.c
+@@ -15,6 +15,7 @@ extern char trampoline[], uservec[];
+ void kernelvec();
+ 
+ extern int devintr();
++extern int sched_policy;   // Track G
+ 
+ void
+ trapinit(void)
+@@ -82,8 +83,20 @@ usertrap(void)
+     kexit(-1);
+ 
+   // give up the CPU if this is a timer interrupt.
+-  if (which_dev == 2)
+-    yield();
++  if (which_dev == 2) {
++    p->rticks++;                                 // Track G: CPU time accounting
++    if (sched_policy == 2) {                     // MLFQ: preempt only when the slice (1, 2, 4 ticks) is used up
++      p->qticks++;
++      if (p->qticks >= (1 << p->level)) {
++        if (p->level < 2)
++          p->level++;
++        p->qticks = 0;
++        yield();
++      }
++    } else {
++      yield();
++    }
++  }
+ 
+   prepare_return();
+ 
+@@ -176,7 +189,7 @@ clockintr()
+   // ask for the next timer interrupt. this also clears
+   // the interrupt request. 1000000 is about a tenth
+   // of a second.
+-  w_stimecmp(r_time() + 1000000);
++  w_stimecmp(r_time() + 100000);                 // Track G: 10 ms tick (was 100 ms) so benchmarks run faster
+ }
+ 
+ // check if it's an external interrupt or software interrupt,
+diff --git a/mkfs/mkfs.c b/mkfs/mkfs.c
+index 1a1693e..d81b07a 100644
+--- a/mkfs/mkfs.c
++++ b/mkfs/mkfs.c
+@@ -11,6 +11,16 @@
+ #include "kernel/stat.h"
+ #include "kernel/param.h"
+ 
++// Track G (host portability): binary-mode files on Windows hosts; no effect on Linux/macOS.
++#ifndef O_BINARY
++#define O_BINARY 0
++#endif
++#ifdef _WIN32
++#define bzero(p, n) memset((p), 0, (n))
++#define bcopy(s, d, n) memmove((d), (s), (n))
++#define index(s, c) strchr((s), (c))
++#endif
++
+ #ifndef static_assert
+ #define static_assert(a, b)                                                    \
+   do {                                                                         \
+@@ -88,7 +98,7 @@ main(int argc, char *argv[])
+   assert((BSIZE % sizeof(struct dinode)) == 0);
+   assert((BSIZE % sizeof(struct dirent)) == 0);
+ 
+-  fsfd = open(argv[1], O_RDWR | O_CREAT | O_TRUNC, 0666);
++  fsfd = open(argv[1], O_RDWR | O_CREAT | O_TRUNC | O_BINARY, 0666);
+   if (fsfd < 0)
+     die(argv[1]);
+ 
+@@ -141,7 +151,7 @@ main(int argc, char *argv[])
+ 
+     assert(index(shortname, '/') == 0);
+ 
+-    if ((fd = open(argv[i], 0)) < 0)
++    if ((fd = open(argv[i], O_RDONLY | O_BINARY)) < 0)
+       die(argv[i]);
+ 
+     // Skip leading _ in name when writing to file system.
+diff --git a/user/schedbench.c b/user/schedbench.c
+new file mode 100644
+index 0000000..c9cb2c3
+--- /dev/null
++++ b/user/schedbench.c
+@@ -0,0 +1,188 @@
++// schedbench POLICY WORKLOAD : scheduler benchmark (Track G). Output lines start with "R ".
++//   share : 3 CPU-bound processes with 30/20/10 tickets, fixed wall duration -> CPU shares
++//   mixed : 2 CPU hogs + 1 interactive process (short bursts + sleep)       -> wake-up delay and throughput
++//   jobs  : 6 CPU jobs of different lengths started together                 -> turnaround and response times
++// Time unit = timer ticks (10 ms). CPU work is counted in loop iterations, calibrated to ticks of solo CPU time.
++#include "kernel/types.h"
++#include "kernel/pstat.h"
++#include "user/user.h"
++
++static volatile int sink;
++static int iters_per_tick;
++
++static void
++spin(int n)               // n loop iterations of useless work
++{
++  int x = 1;
++  for (int i = 0; i < n; i++)
++    x = x * 31 + i;
++  sink = x;
++}
++
++static void
++calibrate(void)           // solo process: measure iterations per tick
++{
++  int t0 = uptime();
++  while (uptime() == t0)
++    ;
++  t0 = uptime();
++  int n = 0;
++  while (uptime() - t0 < 20) {
++    spin(20000);
++    n += 20000;
++  }
++  iters_per_tick = n / 20;
++}
++
++// One work unit = a FIXED number of loop iterations (about one 10 ms tick of solo CPU on this host), identical for every
++// policy. Self-calibrating per run was rejected: QEMU's JIT warm-up made the calibration vary 3.4M-5.3M between runs.
++#define WORK_UNIT 4000000
++
++static void
++spin_ticks(int t)         // t work units of CPU work
++{
++  for (int i = 0; i < t; i++)
++    spin(WORK_UNIT);
++}
++
++static struct pstat st;
++
++static int
++getrticks(void)           // CPU ticks consumed by the calling process
++{
++  getpinfo(&st);
++  int me = getpid();
++  for (int i = 0; i < PSTAT_NPROC; i++)
++    if (st.inuse[i] && st.pid[i] == me)
++      return (int)st.rticks[i];
++  return -1;
++}
++
++static void
++workload_share(void)
++{
++  int tick[3] = {30, 20, 10};
++  int fds[3][2];
++  int T = 600;                                   // 6 s of wall time
++  int start = uptime();
++  for (int k = 0; k < 3; k++) {
++    pipe(fds[k]);
++    if (fork() == 0) {
++      settickets(tick[k]);
++      long iters = 0;
++      while (uptime() - start < T) {
++        spin(10000);
++        iters += 10000;
++      }
++      int rt = getrticks();
++      write(fds[k][1], &iters, sizeof(iters));
++      write(fds[k][1], &rt, sizeof(rt));
++      exit(0);
++    }
++  }
++  for (int k = 0; k < 3; k++) {
++    long iters;
++    int rt;
++    read(fds[k][0], &iters, sizeof(iters));
++    read(fds[k][0], &rt, sizeof(rt));
++    wait(0);
++    printf("R share tickets=%d iters_k=%d cpu_ticks=%d\n", tick[k], (int)(iters / 1000), rt);
++  }
++}
++
++static void
++workload_mixed(void)
++{
++  int T = 600;
++  int start = uptime();
++  for (int k = 0; k < 2; k++) {
++    if (fork() == 0) {
++      while (uptime() - start < T)
++        spin(10000);
++      exit(0);
++    }
++  }
++  int fd[2];
++  pipe(fd);
++  if (fork() == 0) {                              // interactive: sleep 2 ticks, then 1 tick of work, repeat
++    int n = 0, lat_sum = 0, lat_max = 0;
++    while (uptime() - start < T) {
++      int t0 = uptime();
++      pause(2);                                   // this xv6 version calls the sleep system call "pause"
++      int back = uptime();
++      spin_ticks(1);
++      int lat = back - t0 - 2;                    // wake-up delay beyond the 2-tick sleep
++      lat_sum += lat > 0 ? lat : 0;
++      if (lat > lat_max)
++        lat_max = lat;
++      n++;
++    }
++    write(fd[1], &n, sizeof(n));
++    write(fd[1], &lat_sum, sizeof(lat_sum));
++    write(fd[1], &lat_max, sizeof(lat_max));
++    exit(0);
++  }
++  int n, ls, lm;
++  read(fd[0], &n, sizeof(n));
++  read(fd[0], &ls, sizeof(ls));
++  read(fd[0], &lm, sizeof(lm));
++  wait(0);
++  wait(0);
++  wait(0);
++  printf("R mixed interactive_iterations=%d mean_wakeup_delay_x100=%d max_delay=%d\n", n, n ? 100 * ls / n : -1, lm);
++}
++
++static void
++workload_jobs(void)
++{
++  int len[6] = {10, 20, 40, 60, 80, 100};         // job lengths in ticks of solo CPU time (sum 310)
++  int fds[6][2];
++  int start = uptime();
++  for (int k = 0; k < 6; k++) {
++    pipe(fds[k]);
++    if (fork() == 0) {
++      int first = uptime() - start;               // when the job first got the CPU (response time)
++      spin_ticks(len[k]);
++      int done = uptime() - start;                // turnaround (all jobs arrive at time 0)
++      write(fds[k][1], &first, sizeof(first));
++      write(fds[k][1], &done, sizeof(done));
++      exit(0);
++    }
++  }
++  int sum_t = 0, sum_r = 0, mk = 0;
++  for (int k = 0; k < 6; k++) {
++    int first, done;
++    read(fds[k][0], &first, sizeof(first));
++    read(fds[k][0], &done, sizeof(done));
++    wait(0);
++    printf("R job len=%d response=%d turnaround=%d\n", len[k], first, done);
++    sum_t += done;
++    sum_r += first;
++    if (done > mk)
++      mk = done;
++  }
++  printf("R jobs_summary mean_turnaround_x10=%d mean_response_x10=%d makespan=%d\n", sum_t * 10 / 6, sum_r * 10 / 6, mk);
++}
++
++int
++main(int argc, char *argv[])
++{
++  if (argc != 3) {
++    fprintf(2, "usage: schedbench policy share|mixed|jobs\n");
++    exit(1);
++  }
++  int pol = atoi(argv[1]);
++  calibrate();
++  if (setsched(pol) < 0)
++    exit(1);
++  printf("R begin policy=%d workload=%s iters_per_tick=%d\n", pol, argv[2], iters_per_tick);
++  if (strcmp(argv[2], "share") == 0)
++    workload_share();
++  else if (strcmp(argv[2], "mixed") == 0)
++    workload_mixed();
++  else
++    workload_jobs();
++  setsched(0);
++  printf("R done\n");
++  exit(0);
++}
+diff --git a/user/setpolicy.c b/user/setpolicy.c
+new file mode 100644
+index 0000000..fcce807
+--- /dev/null
++++ b/user/setpolicy.c
+@@ -0,0 +1,17 @@
++// setpolicy N: select the kernel scheduling policy (0 round robin, 1 lottery, 2 MLFQ).
++#include "kernel/types.h"
++#include "user/user.h"
++
++int
++main(int argc, char *argv[])
++{
++  if (argc != 2) {
++    fprintf(2, "usage: setpolicy 0|1|2\n");
++    exit(1);
++  }
++  if (setsched(atoi(argv[1])) < 0) {
++    fprintf(2, "setpolicy: bad policy\n");
++    exit(1);
++  }
++  exit(0);
++}
+diff --git a/user/user.h b/user/user.h
+index 29aad59..1d1975c 100644
+--- a/user/user.h
++++ b/user/user.h
+@@ -24,6 +24,10 @@ int getpid(void);
+ char *sys_sbrk(int, int);
+ int pause(int);
+ int uptime(void);
++int settickets(int);
++int setsched(int);
++struct pstat;
++int getpinfo(struct pstat*);
+ int sync(void);
+ 
+ // ulib.c
+diff --git a/user/usys.pl b/user/usys.pl
+index 4d054e8..2ddad50 100755
+--- a/user/usys.pl
++++ b/user/usys.pl
+@@ -42,4 +42,7 @@ entry("getpid");
+ entry("sbrk");
+ entry("pause");
+ entry("uptime");
++entry("settickets");
++entry("setsched");
++entry("getpinfo");
+ entry("sync");
