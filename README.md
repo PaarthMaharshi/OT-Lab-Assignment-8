@@ -9,7 +9,7 @@ Main case study (Track E): **Tower-defense placement optimization**.
 |---|---|---|---|
 | A | Continuous optimization (GD ... Adam, Newton, backprop, landscapes) | `tracks/A_continuous` | WIP |
 | B | Discrete optimization (greedy, ILP, B&B, DP, QUBO/Ising) | `tracks/B_discrete` | WIP |
-| C | Quantum optimization (VQE, QAOA, parameter-shift, SPSA, QNG) | `tracks/C_quantum_optimization` | TODO |
+| C | Quantum optimization (VQE, QAOA, parameter-shift, SPSA, QNG) | `tracks/C_quantum_optimization` | WIP |
 | D | Submodular, parallel, distributed (FedAvg, MGDA, GradNorm) | `tracks/D_submodular_parallel_distributed` | TODO |
 | E | **Main case study: tower defense** | `tracks/E_tower_defense` | WIP |
 | F | Compiler optimization | `tracks/F_compiler` | TODO |

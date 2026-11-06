@@ -50,21 +50,21 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 
 | Topic | Source | Track | Code | Result | Status |
 |---|---|---|---|---|---|
-| Qubit, Born rule, shots (finite-shot cost) | PPT3 s5-7 | C, I | | | TODO |
+| Qubit, Born rule, shots (finite-shot cost) | PPT3 s5-7 | qsim.sample_mean; exp_shots | std = sqrt(var/S); >=1000 shots ~ exact | WIP |
 | Gates, Hadamard interference, CNOT, Bell state | PPT3 s10-17 | I (write circuits by hand) | | | TODO |
 | Deutsch-Jozsa / Deutsch | PPT3 s13 | I | | | TODO |
 | Bernstein-Vazirani | PDF | I | | | TODO |
 | Grover search (vs classical, query counts) | PPT3 s14 | I | | | TODO |
 | Quantum Fourier Transform, Phase Estimation, Shor | PDF | I | | | TODO |
-| Quantum annealing and QUBO embedding limits | PDF | C, I | | | TODO |
-| NISQ, variational loop (VQA) | PPT3 s19-20 | C | | | TODO |
-| VQE | PPT3 s22, 24, 29 | C | | | TODO |
-| QAOA on Max-Cut (solves the Track B QUBO) | PPT3 s27-30 | C | | | TODO |
-| Parameterized circuits / QNN / variational classifier | PPT3 s18, 25 | C, I | | | TODO |
-| Parameter-shift rule | PPT3 s24 | C | | | TODO |
-| SPSA, quantum natural gradient | PDF | C | | | TODO |
+| Quantum annealing and QUBO embedding limits | PDF | exp_embedding | K_65 does not fit Chimera C16; chain-strength trade-off | WIP |
+| NISQ, variational loop (VQA) | PPT3 s19-20 | qopt.py; exp_vqe | SIMULATED | WIP |
+| VQE | PPT3 s22, 24, 29 | exp_vqe; test slide22/24/28 | error 1e-11 at 16 params; slide QUBO -4.000 | WIP |
+| QAOA on Max-Cut (solves the Track B QUBO) | PPT3 s27-30 | exp_qaoa; test slide30 | ratio 0.83/0.88/0.91 (p=1/2/3) | WIP |
+| Parameterized circuits / QNN / variational classifier | PPT3 s18, 25 | hea_ops; test slide25 | slide QNN only; classifier in Track I | WIP |
+| Parameter-shift rule | PPT3 s24 | qsim.param_shift_grad | = finite diff 1e-7 | WIP |
+| SPSA, quantum natural gradient | PDF | qopt.spsa / qng; exp_vqe | SPSA 5/5; QNG fewest iterations, most circuits | WIP |
 | Quantum kernels | PDF | I | | | TODO |
-| Barren plateaus, noise | PPT3 s32 | C | | | TODO |
+| Barren plateaus, noise | PPT3 s32 | exp_barren, exp_noise | slope -0.68; noise erases p=3 gain at 3% | WIP |
 | QML vs classical comparison | PPT3 s33 | I | | | TODO |
 
 ## PPT 4 - Strategy selection

@@ -1,0 +1,338 @@
+{
+ "vqe": {
+  "hamiltonian": "open TFIM chain n=4, H = -sum ZZ - 1.0 sum X",
+  "exact_ground_energy": -4.758770483143635,
+  "error_vs_layers": {
+   "layers=1": {
+    "params": 8,
+    "energy_error": 0.024539634865435644
+   },
+   "layers=2": {
+    "params": 12,
+    "energy_error": 0.00010144505848153074
+   },
+   "layers=3": {
+    "params": 16,
+    "energy_error": 1.0122569449322327e-11
+   },
+   "layers=4": {
+    "params": 20,
+    "energy_error": 9.36406507889842e-12
+   }
+  },
+  "optimizers_L3_P16_tuned": {
+   "GD+param-shift": {
+    "tuned_hyperparameters": {
+     "lr": 0.2
+    },
+    "error_at_4800_circuits_mean": 0.011967114839773174,
+    "std": 0.008627988843560527,
+    "runs_reaching_error_1e-2": "2/5",
+    "iterations_to_1e-2_median": 64.5,
+    "circuit_executions_to_1e-2_median": 2064.0
+   },
+   "Adam+param-shift": {
+    "tuned_hyperparameters": {
+     "lr": 0.4
+    },
+    "error_at_4800_circuits_mean": 0.0017787509149025382,
+    "std": 0.0030333299428581557,
+    "runs_reaching_error_1e-2": "5/5",
+    "iterations_to_1e-2_median": 51,
+    "circuit_executions_to_1e-2_median": 1632
+   },
+   "SPSA": {
+    "tuned_hyperparameters": {
+     "a": 1.0
+    },
+    "error_at_4800_circuits_mean": 0.003880370210139361,
+    "std": 0.0029855361256979976,
+    "runs_reaching_error_1e-2": "5/5",
+    "iterations_to_1e-2_median": 827,
+    "circuit_executions_to_1e-2_median": 1654
+   },
+   "QNG": {
+    "tuned_hyperparameters": {
+     "lr": 0.1,
+     "reg": 0.01
+    },
+    "error_at_4800_circuits_mean": 0.28717665203295645,
+    "std": 0.31525337747386745,
+    "runs_reaching_error_1e-2": "3/5",
+    "iterations_to_1e-2_median": 21,
+    "circuit_executions_to_1e-2_median": 11424
+   }
+  },
+  "note": "circuit executions: parameter-shift = 2 per gate parameter (32 here); SPSA = 2 per step; QNG adds an ASSUMED 2P^2 = 512 executions per step for the metric tensor (here computed from simulated states, so that count is an estimate)",
+  "slide28_vqe_on_4node_qubo": {
+   "ground_energy": -4.0,
+   "found_min": -3.99999999999587,
+   "runs_reaching_-4": "10/10",
+   "worst_run": -3.9999999379368316
+  }
+ },
+ "qaoa_maxcut": {
+  "instances": 12,
+  "classical_baseline": "brute-force optimum (Track B); simulated annealing also reaches it in ms (Track B)",
+  "summary": {
+   "p=1": {
+    "mean_E[cut]/maxcut": 0.8333866030540341,
+    "min_E[cut]/maxcut": 0.7543474890917412,
+    "mean_P(optimal)": 0.17326761517098044,
+    "mean_best_of_1000_shots/maxcut": 1.0,
+    "mean_best_of_1000_RANDOM_bitstrings/maxcut": 1.0,
+    "random_guess_ratio": 0.6501027262211473
+   },
+   "p=2": {
+    "mean_E[cut]/maxcut": 0.8806837714638714,
+    "min_E[cut]/maxcut": 0.8064562329203752,
+    "mean_P(optimal)": 0.27168540819520137,
+    "mean_best_of_1000_shots/maxcut": 1.0,
+    "mean_best_of_1000_RANDOM_bitstrings/maxcut": 1.0,
+    "random_guess_ratio": 0.6501027262211473
+   },
+   "p=3": {
+    "mean_E[cut]/maxcut": 0.9054255701358368,
+    "min_E[cut]/maxcut": 0.8537011724442576,
+    "mean_P(optimal)": 0.3521278554809269,
+    "mean_best_of_1000_shots/maxcut": 1.0,
+    "mean_best_of_1000_RANDOM_bitstrings/maxcut": 1.0,
+    "random_guess_ratio": 0.6501027262211473
+   }
+  },
+  "ratio_by_size": {
+   "n=6": {
+    "p=1": 0.8613442380408917,
+    "p=2": 0.9164098460227007,
+    "p=3": 0.93625057730992
+   },
+   "n=8": {
+    "p=1": 0.8280819439653084,
+    "p=2": 0.8636761492116319,
+    "p=3": 0.9021280779961075
+   },
+   "n=10": {
+    "p=1": 0.8325953726109651,
+    "p=2": 0.8919056354497297,
+    "p=3": 0.9116357348749774
+   },
+   "n=12": {
+    "p=1": 0.8115248575989712,
+    "p=2": 0.8507434551714235,
+    "p=3": 0.8716878903623425
+   }
+  },
+  "simulation_seconds_per_size_p3": {
+   "6": 2.1030601000020397,
+   "8": 3.0375330000024405,
+   "10": 6.881016400002409,
+   "12": 12.643523700000515
+  }
+ },
+ "finite_shots": {
+  "graph": "n=8, p=2",
+  "noiseless_optimum_ratio": 0.818371855744467,
+  "estimator_std_check": {
+   "10": {
+    "empirical_std": 0.5073075373971886,
+    "theory_sqrt(var/S)": 0.4764002150704195
+   },
+   "100": {
+    "empirical_std": 0.1464793159459724,
+    "theory_sqrt(var/S)": 0.1506509757416599
+   },
+   "1000": {
+    "empirical_std": 0.049203112134803044,
+    "theory_sqrt(var/S)": 0.04764002150704195
+   },
+   "10000": {
+    "empirical_std": 0.014610710112790564,
+    "theory_sqrt(var/S)": 0.015065097574165989
+   }
+  },
+  "spsa_150_iterations_with_shot_noise": {
+   "10": {
+    "final_exact_ratio_mean": 0.7217374752056372,
+    "std": 0.020734216007472023,
+    "start_ratio_mean": 0.7000827939788072,
+    "circuit_evals": 300,
+    "total_shots": 3000
+   },
+   "100": {
+    "final_exact_ratio_mean": 0.7569102703283139,
+    "std": 0.03762674499208727,
+    "start_ratio_mean": 0.7000827939788072,
+    "circuit_evals": 300,
+    "total_shots": 30000
+   },
+   "1000": {
+    "final_exact_ratio_mean": 0.7781239768587088,
+    "std": 0.03822925111603557,
+    "start_ratio_mean": 0.7000827939788072,
+    "circuit_evals": 300,
+    "total_shots": 300000
+   },
+   "10000": {
+    "final_exact_ratio_mean": 0.7744679975924103,
+    "std": 0.04195625508431375,
+    "start_ratio_mean": 0.7000827939788072,
+    "circuit_evals": 300,
+    "total_shots": 3000000
+   },
+   "exact (infinite shots)": {
+    "final_exact_ratio_mean": 0.7745671830298322,
+    "std": 0.042061209046186716,
+    "start_ratio_mean": 0.7000827939788072,
+    "circuit_evals": 300,
+    "total_shots": null
+   }
+  }
+ },
+ "noise_depolarizing": {
+  "model": "single-qubit depolarizing channel after every gate on each qubit it touches (density-matrix simulation, simulated not hardware)",
+  "graph": "n=6, 8 edges",
+  "random_guess_ratio": 0.5714285714285714,
+  "rows": {
+   "p=1": {
+    "gates": 20,
+    "ratios": {
+     "0.0": 0.7543474890917797,
+     "0.001": 0.7526239722197327,
+     "0.003": 0.7492161751385106,
+     "0.01": 0.7376940379695949,
+     "0.03": 0.7080755252243875
+    }
+   },
+   "p=2": {
+    "gates": 34,
+    "ratios": {
+     "0.0": 0.8579531563689046,
+     "0.001": 0.8522088912053805,
+     "0.003": 0.8410859675594148,
+     "0.01": 0.8057036777195974,
+     "0.03": 0.7290562956073678
+    }
+   },
+   "p=3": {
+    "gates": 48,
+    "ratios": {
+     "0.0": 0.8875685157027807,
+     "0.001": 0.8777245955068312,
+     "0.003": 0.8589537656578027,
+     "0.01": 0.801915579470615,
+     "0.03": 0.6941202365081723
+    }
+   }
+  }
+ },
+ "barren_plateau": {
+  "samples_per_point": 150,
+  "variance_of_dC/dtheta_1": {
+   "global cost, depth n": {
+    "2": 0.23608803657619964,
+    "3": 0.10533823519617969,
+    "4": 0.08201144238887904,
+    "5": 0.034264394422595094,
+    "6": 0.013871797579979616,
+    "7": 0.007922252312473258,
+    "8": 0.0045638531063395,
+    "9": 0.0017497480529451374,
+    "10": 0.0011800379213298155,
+    "11": 0.0004924230169758501
+   },
+   "local cost Z0 Z1, depth n": {
+    "2": 0.23608803657619964,
+    "3": 0.12884757536959202,
+    "4": 0.06345563000972133,
+    "5": 0.03455867392198691,
+    "6": 0.021117640775836433,
+    "7": 0.018713570694329763,
+    "8": 0.01105302027765418,
+    "9": 0.0076235081816555745,
+    "10": 0.005623669213339084,
+    "11": 0.0031116247102849492
+   },
+   "local cost Z0 Z1, depth 2": {
+    "2": 0.23608803657619964,
+    "3": 0.14345752397334674,
+    "4": 0.08744090652999593,
+    "5": 0.09771693149651843,
+    "6": 0.09968037013576425,
+    "7": 0.09071710010463842,
+    "8": 0.09626331168532885,
+    "9": 0.08998025035360467,
+    "10": 0.09848601063688657,
+    "11": 0.09439698056588068
+   }
+  },
+  "slope_of_ln_variance_vs_qubits": {
+   "global cost, depth n": -0.6838784367850618,
+   "local cost Z0 Z1, depth n": -0.45466244888192714,
+   "local cost Z0 Z1, depth 2": -0.06593444338188063
+  },
+  "note": "slope -0.69 would mean variance halves with each added qubit"
+ },
+ "annealing_embedding": {
+  "clique_embedding_chimera": {
+   "rule": "K_{4m} embeds in Chimera C_m with chains of length m+1 (standard clique embedding)",
+   "table": {
+    "Chimera C4 (128 physical qubits)": {
+     "max_dense_logical_vars": 16,
+     "chain_length": 5,
+     "physical_qubits_used": 80
+    },
+    "Chimera C8 (512 physical qubits)": {
+     "max_dense_logical_vars": 32,
+     "chain_length": 9,
+     "physical_qubits_used": 288
+    },
+    "Chimera C12 (1152 physical qubits)": {
+     "max_dense_logical_vars": 48,
+     "chain_length": 13,
+     "physical_qubits_used": 624
+    },
+    "Chimera C16 (2048 physical qubits)": {
+     "max_dense_logical_vars": 64,
+     "chain_length": 17,
+     "physical_qubits_used": 1088
+    }
+   },
+   "consequence": "a fully connected QUBO of 65+ variables does not fit a 2048-qubit C16 Chimera; physical qubits needed grow ~ n^2/4"
+  },
+  "chain_strength_tradeoff": {
+   "logical_vars": 8,
+   "chain_length": 3,
+   "rows": {
+    "chain_strength=0.0": {
+     "runs_with_broken_chains": "20/20",
+     "mean_logical_energy/optimum": 0.8125
+    },
+    "chain_strength=0.5": {
+     "runs_with_broken_chains": "3/20",
+     "mean_logical_energy/optimum": 0.984375
+    },
+    "chain_strength=1.0": {
+     "runs_with_broken_chains": "0/20",
+     "mean_logical_energy/optimum": 0.95
+    },
+    "chain_strength=2.0": {
+     "runs_with_broken_chains": "0/20",
+     "mean_logical_energy/optimum": 0.946875
+    },
+    "chain_strength=4.0": {
+     "runs_with_broken_chains": "0/20",
+     "mean_logical_energy/optimum": 0.934375
+    },
+    "chain_strength=8.0": {
+     "runs_with_broken_chains": "0/20",
+     "mean_logical_energy/optimum": 0.934375
+    },
+    "chain_strength=16.0": {
+     "runs_with_broken_chains": "0/20",
+     "mean_logical_energy/optimum": 0.93125
+    }
+   },
+   "note": "weak chains break; strong chains rescale away the problem couplings (the same energy-scale effect as the penalty weight in Track B)"
+  }
+ }
+}
