@@ -4,20 +4,22 @@
 **Same conditions for every tool:** the identical prompt pasted into a fresh chat; the first answer is saved unedited; any follow-up prompt is counted as an iteration.
 **Scoring is automatic:** `python docs/tool_comparison/check.py <file>` checks 60 instances against brute force (n = 1-8, symmetric and asymmetric), tour validity, and runtime at n = 13 and 15.
 
-| Criterion | Tool 1: Claude Code (Claude Opus 5.5) | Tool 2: _name + model version_ |
+| Criterion | Tool 1: Claude Code (Claude Opus 5.5, `claude-opus-5-5`) | Tool 2: Claude Haiku 5.5 (`claude-haiku-5-5`), fresh agent |
 |---|---|---|
-| Correctness (checker) | 60/60 correct | _fill in_ |
-| Runtime n=13 / n=15 | 0.06 s / 0.48 s | _fill in_ |
-| Hallucinations (invented APIs, wrong complexity claims, missing edge cases) | none found; handles n=1 and asymmetric distances | _fill in_ |
-| Prompt iterations needed to reach 60/60 | 1 | _fill in_ |
-| Time to working code | one response | _fill in_ |
-| Readability / explainability | about 35 lines, bitmask DP with a parent table; comments explain the state | _fill in_ |
+| Correctness (checker) | 60/60 correct | 60/60 correct |
+| Runtime n=13 / n=15 | 0.06 s / 0.48 s | 0.05 s / **0.27 s** |
+| Hallucinations (invented APIs, wrong complexity claims, missing edge cases) | none found; handles n=1 and asymmetric distances | none found; claimed O(n^2 2^n) time and O(n 2^n) memory (correct); also guards n=0 |
+| Prompt iterations needed to reach 60/60 | 1 | 1 |
+| Time to working code | one response | one response, 12 s of agent time, 2 tool calls |
+| Readability / explainability | 35 lines, bitmask DP with a parent table; terse | 68 lines, same algorithm, more comments and explicit loops; slightly easier to explain |
 
-Files: `docs/tool_comparison/claude_code_solution.py` (Tool 1, unedited first attempt), `docs/tool_comparison/<tool2>_solution.py` (Tool 2).
+Files: `docs/tool_comparison/claude_code_solution.py` (Tool 1) and `docs/tool_comparison/claude_haiku_solution.py` (Tool 2), both unedited first attempts.
 
-**Caveat on Tool 1:** this answer was produced late in a long session in which the same tool had already written many optimization algorithms, so it is not a cold-start test. Tool 2 should be given the prompt in a fresh chat; note this difference in the conclusion.
+**How Tool 2 was run:** Claude Code launched a separate agent on the Claude Haiku 5.5 model with only the task prompt, instructed not to read any repository file and not to run or test its code; its file was then scored by the same checker.
+**Caveat on Tool 1:** this answer was produced late in a long session in which the same tool had already written many optimization algorithms, so it is not a cold-start test; Tool 2 was.
+**Caveat on the comparison:** both are Claude models from one vendor, used through Claude Code. This compares two models, not two products; a comparison with a different product (ChatGPT, Gemini) can be added with the steps below.
 
-## How to complete Tool 2 (about 5 minutes)
+## Optional: add a third tool from another vendor (about 5 minutes)
 1. Open ChatGPT (or Gemini, Copilot, ...) in a new chat and paste the text of `TASK_PROMPT.md`.
 2. Save its code unedited as `docs/tool_comparison/chatgpt_solution.py`.
 3. Run `python docs/tool_comparison/check.py docs/tool_comparison/chatgpt_solution.py`.
@@ -25,4 +27,4 @@ Files: `docs/tool_comparison/claude_code_solution.py` (Tool 1, unedited first at
 5. Fill in the right-hand column and the conclusion; add the tool to the AI tools register in `README.md`; save a screenshot of the chat in `prompts/`.
 
 ## Conclusion
-_Write after filling in Tool 2: which tool was correct first time, which needed fixes, which made unsupported claims, and which code you could explain more easily in the viva._
+Both models solved the task correctly on the first attempt (60/60 against brute force, valid tours, asymmetric distances and n = 1 handled) and neither invented an API or made a false complexity claim. The smaller model was **1.8x faster at n = 15** (0.27 s vs 0.48 s) because it hoisted the current DP row and distance row out of the inner loop and sized arrays by n-1 cities; the larger model's answer was shorter and terser. On a well-specified, textbook algorithm the cheaper model was fully sufficient; the larger model's advantage in this project showed up elsewhere, in multi-step debugging of experiments (see `docs/failure_log.md`), which this single-function task does not measure. Limitations: one task, one attempt each, same vendor.

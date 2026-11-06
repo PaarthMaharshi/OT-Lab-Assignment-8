@@ -43,11 +43,12 @@ Hardware: Windows 11, 12 logical processors (most likely 6 physical cores, judgi
 |---|---|---|---|---|
 | Claude Code | Claude Sonnet 5.5 (`claude-sonnet-5-5`) | setup, A, B, C, D, E, F, H, I, J (code) | 2026-11-06 to 2026-11-07 | planning, code generation, debugging, testing, documentation |
 | Claude Code | Claude Opus 5.5 (`claude-opus-5-5`) | J (measurements, write-up), G, E (finish), D/B supplements, report | 2026-11-07 | code generation, debugging, measurement, documentation |
+| Claude Code (agent) | Claude Haiku 5.5 (`claude-haiku-5-5`) | tool comparison only | 2026-11-07 | code generation for the comparison task (docs/tool_comparison.md) |
 | _add every other tool you use, including for debugging or explanation_ | | | | |
 
 ## Still to do by the student (cannot be done by the AI on your behalf)
 
-1. **Tool comparison** (`docs/tool_comparison.md`): run one task with a second AI tool (e.g. ChatGPT or Gemini) and compare it with Claude Code; then add that tool to the register above.
+1. **Tool comparison** (`docs/tool_comparison.md`): done for two Claude models (Opus 5.5 vs Haiku 5.5, both 60/60). Optionally add a different vendor's tool (ChatGPT, Gemini) with the steps in that file.
 2. **Chat exports / screenshots** into each `prompts/<track>/` folder (the logs have a placeholder).
 3. **Demonstration** (short video or live demo): suggested flow is Track E (`run_baseline.py` map, `results/comparison.png`), then one surprising result (Track H's 11x regression or Track J's slower-than-full suite).
 4. **Viva preparation**: read and be able to modify `tracks/E_tower_defense/td/sim.py`, `td/optim.py`, `tracks/A_continuous/optlib.py`, `tracks/F_compiler/passes.py` and the xv6 patch, without AI.
