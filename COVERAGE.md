@@ -107,3 +107,10 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 |---|---|---|---|
 | Index selection under a storage budget | greedy, DP knapsack, interaction-aware ILP | tracks/H_dbms | ILP best or tied at 3 budgets; additive methods caused an 11x regression at 30% |
 | Join order | DP over subsets, greedy vs all 24 measured orders vs SQLite | tracks/H_dbms | DP = measured best (0.041 s); worst 15.6 s |
+
+## Track J (software engineering) - decisions solved with Chapter 6 methods
+
+| Decision | Methods | Where | Result |
+|---|---|---|---|
+| Test-suite minimization (weighted set cover) | greedy vs ILP vs random | tracks/J_software_engineering | 654 -> 61 tests, 100% coverage, 30/33 mutants kept, 1.74x end to end |
+| Test prioritization | greedy additional coverage | tracks/J_software_engineering | APFD 0.962 vs 0.743 random |

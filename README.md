@@ -16,7 +16,7 @@ Main case study (Track E): **Tower-defense placement optimization**.
 | G | xv6 OS optimization | `tracks/G_xv6` | TODO |
 | H | DBMS optimization | `tracks/H_dbms` | WIP |
 | I | Quantum algorithms and QML vs classical | `tracks/I_quantum_algorithms_qml` | WIP |
-| J | Software-engineering optimization | `tracks/J_software_engineering` | TODO |
+| J | Software-engineering optimization | `tracks/J_software_engineering` | WIP |
 
 Chapter 6 coverage: see [COVERAGE.md](COVERAGE.md).
 
@@ -34,7 +34,8 @@ Environment notes: xv6 needs QEMU (RISC-V) and a RISC-V toolchain, best under WS
 
 | Tool | Model / version | Tracks | Dates | Kind of work |
 |---|---|---|---|---|
-| Claude Code | Claude Sonnet 5.5 (`claude-sonnet-5-5`) | setup | 2026-11-06 | planning, scaffolding, documentation |
+| Claude Code | Claude Sonnet 5.5 (`claude-sonnet-5-5`) | setup, A, B, C, D, E, F, H, I, J (code) | 2026-11-06 to 2026-11-07 | planning, code generation, debugging, testing, documentation |
+| Claude Code | Claude Opus 5.5 (`claude-opus-5-5`) | J (measurements, write-up), G, E (finish), final docs | 2026-11-07 | code generation, debugging, measurement, documentation |
 | _add every tool you use, including for debugging or explanation_ | | | | |
 
 ## Rules we follow

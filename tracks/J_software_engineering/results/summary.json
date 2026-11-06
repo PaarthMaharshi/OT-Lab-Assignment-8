@@ -1,0 +1,67 @@
+{
+ "package": "networkx/algorithms/shortest_paths",
+ "source_lines_in_package_files": 4595,
+ "tests_with_coverage": 654,
+ "covered_lines": 800,
+ "mutants_generated": 48,
+ "mutants_killed_by_full_suite": 33,
+ "mutation_sample_note": "operator-swap mutants on covered lines, seed 0; survivors of the full suite are excluded from the retention score",
+ "minimization": {
+  "full suite (baseline)": {
+   "tests": 654,
+   "runtime_s": 2.896,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 33,
+   "mutation_score_vs_full_suite": 1.0
+  },
+  "greedy, time-weighted": {
+   "tests": 67,
+   "runtime_s": 0.096,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 29,
+   "mutation_score_vs_full_suite": 0.8787878787878788
+  },
+  "ILP, time-weighted": {
+   "tests": 61,
+   "runtime_s": 0.09,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 30,
+   "mutation_score_vs_full_suite": 0.9090909090909091,
+   "proven_optimal": true
+  },
+  "greedy, unit cost (fewest tests)": {
+   "tests": 60,
+   "runtime_s": 0.107,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 29,
+   "mutation_score_vs_full_suite": 0.8787878787878788
+  },
+  "ILP, unit cost (fewest tests)": {
+   "tests": 60,
+   "runtime_s": 0.094,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 29,
+   "mutation_score_vs_full_suite": 0.8787878787878788,
+   "proven_optimal": true
+  },
+  "random until covered (mean of 30)": {
+   "tests": 77.2,
+   "runtime_s": 0.1358,
+   "line_coverage_of_full_suite": 1.0,
+   "mutants_killed": 30.266666666666666,
+   "mutation_score_vs_full_suite": 0.9171717171717172
+  },
+  "random subset of the same size (61 tests), mean of 200": {
+   "tests": 61,
+   "runtime_s": 0.27056,
+   "line_coverage_of_full_suite": 0.5141375,
+   "mutants_killed": 12.23,
+   "mutation_score_vs_full_suite": 0.3706060606060606
+  }
+ },
+ "prioritization_APFD": {
+  "original (alphabetical)": 0.30393383375034744,
+  "random (mean of 100)": 0.7433727180057454,
+  "greedy additional coverage per second": 0.962306551756093
+ }
+}

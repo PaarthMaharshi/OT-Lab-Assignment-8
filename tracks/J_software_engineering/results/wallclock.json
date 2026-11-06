@@ -1,0 +1,25 @@
+{
+ "selected_tests": 61,
+ "node_ids_resolved": 61,
+ "full_suite_tests": 654,
+ "reduced_via_plugin_wall_s": [
+  4.67,
+  4.67,
+  4.8
+ ],
+ "plugin_last_line": "61 passed, 593 deselected in 1.47s",
+ "wall_clock_speedup_plugin": 1.739654740712282,
+ "full_suite_wall_s": [
+  8.34,
+  8.08,
+  8.17
+ ],
+ "reduced_suite_wall_s": [
+  15.81,
+  17.27,
+  14.75
+ ],
+ "full_last_line": "654 passed in 4.92s",
+ "reduced_last_line": "61 passed in 10.74s",
+ "wall_clock_speedup_node_ids_on_command_line": 0.5140043898071764
+}
