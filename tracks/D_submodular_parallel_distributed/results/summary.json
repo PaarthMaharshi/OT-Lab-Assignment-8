@@ -1,0 +1,343 @@
+{
+ "submodular": {
+  "objective": "max coverage (monotone submodular), 30 instances per k",
+  "rows": {
+   "k=3": {
+    "greedy/optimum_mean": 0.9984135871593879,
+    "min": 0.9736842105263158,
+    "bound_1-1/e": 0.6321205588285577,
+    "instances_where_greedy_is_not_optimal": 2
+   },
+   "k=5": {
+    "greedy/optimum_mean": 0.9955042787269721,
+    "min": 0.9655172413793104,
+    "bound_1-1/e": 0.6321205588285577,
+    "instances_where_greedy_is_not_optimal": 7
+   },
+   "k=8": {
+    "greedy/optimum_mean": 0.994403172669924,
+    "min": 0.9529411764705882,
+    "bound_1-1/e": 0.6321205588285577,
+    "instances_where_greedy_is_not_optimal": 7
+   }
+  },
+  "diminishing_returns_violations_coverage": 0,
+  "diminishing_returns_violations_|S|^2_supermodular": 300,
+  "note": "the (1-1/e) bound is checked, not assumed: it needs monotone + submodular + cardinality constraint"
+ },
+ "fedavg": {
+  "IID": {
+   "centralized GD (3000 steps)": {
+    "final_loss": 0.4120418455407836
+   },
+   "FedAvg E=1 local steps": {
+    "loss_after_10_rounds": 0.6071744332837795,
+    "loss_after_60_rounds": 0.4678545548917881,
+    "rounds_to_gap_0.01": null,
+    "gradient_steps_per_client": 60
+   },
+   "FedAvg E=5 local steps": {
+    "loss_after_10_rounds": 0.480418488840105,
+    "loss_after_60_rounds": 0.41454378961723726,
+    "rounds_to_gap_0.01": 36,
+    "gradient_steps_per_client": 300
+   },
+   "FedAvg E=20 local steps": {
+    "loss_after_10_rounds": 0.4195553600610291,
+    "loss_after_60_rounds": 0.4120437116534865,
+    "rounds_to_gap_0.01": 9,
+    "gradient_steps_per_client": 1200
+   }
+  },
+  "non-IID (feature shift + label skew)": {
+   "centralized GD (3000 steps)": {
+    "final_loss": 0.1498911629093093
+   },
+   "FedAvg E=1 local steps": {
+    "loss_after_10_rounds": 0.3250781486751296,
+    "loss_after_60_rounds": 0.1905629687233069,
+    "rounds_to_gap_0.01": null,
+    "gradient_steps_per_client": 60
+   },
+   "FedAvg E=5 local steps": {
+    "loss_after_10_rounds": 0.21878298067677848,
+    "loss_after_60_rounds": 0.15727793197302564,
+    "rounds_to_gap_0.01": 50,
+    "gradient_steps_per_client": 300
+   },
+   "FedAvg E=20 local steps": {
+    "loss_after_10_rounds": 0.17888205929022893,
+    "loss_after_60_rounds": 0.1540675086230407,
+    "rounds_to_gap_0.01": 24,
+    "gradient_steps_per_client": 1200
+   }
+  }
+ },
+ "multitask": {
+  "equal": {
+   "task1_final/initial": 5.2991259444110646e-05,
+   "task2_final/initial": 0.7212572520482979,
+   "mean_of_both": 0.36065512165387104
+  },
+  "mgda": {
+   "task1_final/initial": 0.9791556438281843,
+   "task2_final/initial": 0.0019726085922188727,
+   "mean_of_both": 0.4905641262102015
+  },
+  "mgda_norm": {
+   "task1_final/initial": 0.49810793099682993,
+   "task2_final/initial": 0.10540901408881251,
+   "mean_of_both": 0.3017584725428212
+  },
+  "gradnorm": {
+   "task1_final/initial": 0.032311278315184946,
+   "task2_final/initial": 0.6132135662299996,
+   "mean_of_both": 0.3227624222725922
+  },
+  "note": "2 tasks sharing ONE hidden feature, 5 problems, 1500 steps, same lr; losses relative to each task's initial loss (lower is better). Equal weighting is dominated by the larger-scale task; raw MGDA is dominated by the smaller-gradient task; these are trade-offs, not a single winner"
+ },
+ "parallel": {
+  "cores_on_machine": 12,
+  "tasks": 240,
+  "load_balancing": {
+   "irregular": {
+    "serial_s": 2.4322901999985334,
+    "lower_bound_seconds": {
+     "2": 1.2161450999992667,
+     "4": 0.6080725499996333,
+     "8": 0.30403627499981667,
+     "12": 0.20269084999987777
+    },
+    "static": {
+     "2": {
+      "seconds": 1.202064100001735,
+      "speedup": 2.0234280351563805,
+      "efficiency": 1.0117140175781902
+     },
+     "4": {
+      "seconds": 0.7250730999985535,
+      "speedup": 3.3545448038320353,
+      "efficiency": 0.8386362009580088
+     },
+     "8": {
+      "seconds": 0.7511895000025106,
+      "speedup": 3.2379182616242694,
+      "efficiency": 0.4047397827030337
+     },
+     "12": {
+      "seconds": 1.0278367999999318,
+      "speedup": 2.366416730748203,
+      "efficiency": 0.19720139422901692
+     }
+    },
+    "dynamic": {
+     "2": {
+      "seconds": 1.3821941000023799,
+      "speedup": 1.7597312852039706,
+      "efficiency": 0.8798656426019853
+     },
+     "4": {
+      "seconds": 0.7123687999992399,
+      "speedup": 3.41436935475154,
+      "efficiency": 0.853592338687885
+     },
+     "8": {
+      "seconds": 0.6819474000003538,
+      "speedup": 3.5666830022334146,
+      "efficiency": 0.4458353752791768
+     },
+     "12": {
+      "seconds": 0.8091619999977411,
+      "speedup": 3.0059372536096896,
+      "efficiency": 0.2504947711341408
+     }
+    },
+    "dynamic+LPT": {
+     "2": {
+      "seconds": 1.4012982999993255,
+      "speedup": 1.7357404915139796,
+      "efficiency": 0.8678702457569898
+     },
+     "4": {
+      "seconds": 0.6767617000004975,
+      "speedup": 3.5940127817468768,
+      "efficiency": 0.8985031954367192
+     },
+     "8": {
+      "seconds": 0.6551505000024918,
+      "speedup": 3.712567112425744,
+      "efficiency": 0.464070889053218
+     },
+     "12": {
+      "seconds": 0.5721720000001369,
+      "speedup": 4.250977328492047,
+      "efficiency": 0.35424811070767054
+     }
+    }
+   },
+   "uniform": {
+    "serial_s": 2.7986282000019855,
+    "lower_bound_seconds": {
+     "2": 1.3993141000009928,
+     "4": 0.6996570500004964,
+     "8": 0.3498285250002482,
+     "12": 0.23321901666683212
+    },
+    "static": {
+     "2": {
+      "seconds": 1.5050656000021263,
+      "speedup": 1.859472570496616,
+      "efficiency": 0.929736285248308
+     },
+     "4": {
+      "seconds": 0.9022661000017251,
+      "speedup": 3.1017769591439093,
+      "efficiency": 0.7754442397859773
+     },
+     "8": {
+      "seconds": 0.6914175000019895,
+      "speedup": 4.047667581445267,
+      "efficiency": 0.5059584476806583
+     },
+     "12": {
+      "seconds": 0.8908188999994309,
+      "speedup": 3.1416354098501653,
+      "efficiency": 0.2618029508208471
+     }
+    },
+    "dynamic": {
+     "2": {
+      "seconds": 1.6096479000007093,
+      "speedup": 1.7386586221749192,
+      "efficiency": 0.8693293110874596
+     },
+     "4": {
+      "seconds": 0.9206540999985009,
+      "speedup": 3.0398259237715255,
+      "efficiency": 0.7599564809428814
+     },
+     "8": {
+      "seconds": 0.6938158000011754,
+      "speedup": 4.033676085204812,
+      "efficiency": 0.5042095106506015
+     },
+     "12": {
+      "seconds": 0.8268216000033135,
+      "speedup": 3.3848029611112844,
+      "efficiency": 0.28206691342594037
+     }
+    },
+    "dynamic+LPT": {
+     "2": {
+      "seconds": 1.570715099998779,
+      "speedup": 1.7817541831769246,
+      "efficiency": 0.8908770915884623
+     },
+     "4": {
+      "seconds": 0.927350000001752,
+      "speedup": 3.017876961230062,
+      "efficiency": 0.7544692403075155
+     },
+     "8": {
+      "seconds": 0.7529020000001765,
+      "speedup": 3.7171214846040117,
+      "efficiency": 0.46464018557550146
+     },
+     "12": {
+      "seconds": 0.7480308000012883,
+      "speedup": 3.741327496136744,
+      "efficiency": 0.3117772913447287
+     }
+    }
+   }
+  },
+  "amdahl_fit": {
+   "measured_speedup_p12_LPT": 4.250977328492047,
+   "implied_serial_fraction": 0.16571638756554266,
+   "model_speedups": {
+    "1": 1.0,
+    "2": 1.7156831810323585,
+    "4": 2.67174447253826,
+    "8": 3.7036784758940655,
+    "12": 4.250977328492047
+   },
+   "caveat": "12 logical processors may be 6 physical cores with hyper-threading; the fit lumps that in"
+  },
+  "communication_overhead_tiny_tasks_p8": {
+   "serial_s": 1.0371129999984987,
+   "chunksize=1": {
+    "seconds": 0.7114641000007396,
+    "speedup": 1.457716559412373
+   },
+   "chunksize=10": {
+    "seconds": 0.357090599998628,
+    "speedup": 2.904341363235222
+   },
+   "chunksize=100": {
+    "seconds": 0.2842726999988372,
+    "speedup": 3.6483031962011863
+   },
+   "chunksize=750": {
+    "seconds": 0.2598124999967695,
+    "speedup": 3.991774837667142
+   }
+  },
+  "data_parallel_gradient_2M_samples": {
+   "serial_s_per_5_steps": 0.6044392999974662,
+   "p=2": {
+    "seconds": 0.5413154999987455,
+    "speedup": 1.1166118465088601,
+    "efficiency": 0.5583059232544301
+   },
+   "p=4": {
+    "seconds": 0.4355772999988403,
+    "speedup": 1.3876740133130798,
+    "efficiency": 0.34691850332826996
+   },
+   "p=8": {
+    "seconds": 0.37452810000104364,
+    "speedup": 1.613869026104535,
+    "efficiency": 0.20173362826306687
+   },
+   "p=12": {
+    "seconds": 0.73145569999906,
+    "speedup": 0.8263512062292261,
+    "efficiency": 0.06886260051910217
+   }
+  },
+  "simulated_makespan_64_lognormal_tasks": {
+   "p=4": {
+    "static_block": 35.60957897924099,
+    "round_robin_queues": 35.607693342871585,
+    "work_stealing": 28.99846850155386,
+    "dynamic_pool": 29.33943662927463,
+    "lower_bound_total/p": 26.16703284814392
+   },
+   "p=8": {
+    "static_block": 22.658324105165484,
+    "round_robin_queues": 22.6266093631923,
+    "work_stealing": 17.602397507981905,
+    "dynamic_pool": 18.249395721446717,
+    "lower_bound_total/p": 13.00269565689637
+   }
+  },
+  "pipeline_parallelism_simulated": {
+   "S=4,m=1": {
+    "simulated_bubble": 0.75,
+    "formula": 0.75
+   },
+   "S=4,m=4": {
+    "simulated_bubble": 0.4285714285714286,
+    "formula": 0.42857142857142855
+   },
+   "S=4,m=8": {
+    "simulated_bubble": 0.2727272727272727,
+    "formula": 0.2727272727272727
+   },
+   "S=4,m=32": {
+    "simulated_bubble": 0.08571428571428574,
+    "formula": 0.08571428571428572
+   }
+  }
+ }
+}

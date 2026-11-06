@@ -27,24 +27,24 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 | Sparse learning L0/L1 (Lasso soft-threshold) | PPT1 s27 | exp_featsel (L1 path); test slide27 | L1 test acc 0.967; L0 only as exhaustive search | WIP |
 | Discrete choices in deep learning (NAS, quantization, pruning) | PPT1 s28 | not done | listed only | TODO |
 | QUBO / Ising (binary-to-spin conversion, penalty terms) | PPT3 s23, s28 + PDF | qubo.py; exp_qubo_penalty | energies equal over all 2^n; feasible only for P >= 0.2 | WIP |
-| Submodularity, diminishing returns, testing the property | PPT1 s29-30 | D | | | TODO |
-| Greedy (1-1/e) guarantee, checking its assumptions | PPT1 s31 | D, E | | | TODO |
+| Submodularity, diminishing returns, testing the property | PPT1 s29-30 | dlib.is_submodular_on_samples | 0 violations; |S|^2 flagged | WIP |
+| Greedy (1-1/e) guarantee, checking its assumptions | PPT1 s31 | exp_submodular; Track E | worst ratio 0.953 >= 0.632 | WIP |
 | Submodular applications (summarization, sensor placement) | PPT1 s32-33 | D | | | TODO |
 
 ## PPT 2 - Parallel optimization
 
 | Topic | Source | Track | Code | Result | Status |
 |---|---|---|---|---|---|
-| Speedup, efficiency | PPT2 s6 | D | | | TODO |
-| Amdahl's and Gustafson's laws | PPT2 s7-8 | D | | | TODO |
-| Makespan; static vs dynamic scheduling | PPT2 s9-12 | D | | | TODO |
-| Work stealing | PPT2 s13-14 | D | | | TODO |
+| Speedup, efficiency | PPT2 s6 | exp_parallel | measured up to 4.25x | WIP |
+| Amdahl's and Gustafson's laws | PPT2 s7-8 | dlib.amdahl/gustafson | slide values tested; fitted s=0.17 | WIP |
+| Makespan; static vs dynamic scheduling | PPT2 s9-12 | exp_parallel | static 2.37x vs LPT 4.25x at p=12 | WIP |
+| Work stealing | PPT2 s13-14 | makespan_work_stealing | 15 -> 11 | WIP |
 | Data locality, cache blocking, loop order | PPT2 s16-20 | D | | | TODO |
 | False sharing, NUMA | PPT2 s20-21 | D | | | TODO |
 | Synchronization (barrier, lock, atomic, reduction), races, deadlock | PPT2 s23-24 | D | | | TODO |
 | MPI collectives, communication cost T = alpha + n/beta | PPT2 s25-26 | D | | | TODO |
 | Overlap, local SGD, sync vs async SGD | PPT2 s27-28 | D | | | TODO |
-| Data / model / pipeline parallelism | PPT4 s10, s14 | D | | | TODO |
+| Data / model / pipeline parallelism | PPT4 s10, s14 | exp_parallel | data-parallel 1.6x at p=8; pipeline simulated | WIP |
 
 ## PPT 3 - Quantum
 
@@ -73,7 +73,7 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 |---|---|---|---|---|---|
 | Decision guide (problem type, size, convexity, hardware, budget) | PPT4 s3-7 | E (strategy table) | | | TODO |
 | Model-fit check; data / model / pipeline parallel choice | PPT4 s8-10 | D | | | TODO |
-| Ring all-reduce cost | PPT4 s11 | D | | | TODO |
+| Ring all-reduce cost | PPT4 s11 | not done | TODO | TODO |
 | Amdahl applied to training | PPT4 s13 | D | | | TODO |
 | Pipeline bubble formula | PPT4 s14 | D | | | TODO |
 | Top-k sparsification, communication reduction | PPT4 s15 | D | | | TODO |
@@ -85,8 +85,8 @@ Maps every Chapter 6 topic to an experiment, code location and result.
 
 | Topic | Track | Note |
 |---|---|---|
-| FedAvg vs centralized training | D | Not in slides. Ask whether it was taught. |
-| MGDA, GradNorm (two-task model) | D | Same. |
+| FedAvg vs centralized | D | exp_fedavg | E=20: 9 rounds vs 36 for E=5 | WIP |
+| MGDA, GradNorm (two-task model) | D | exp_multitask | mgda_norm best mean 0.30 | WIP |
 | Gauss-Newton, Fisher/Hessian-vector products | A | Same. |
 | SPSA, quantum natural gradient | C | Same. |
 | QFT, QPE, Shor, Bernstein-Vazirani, quantum annealing | I | Slides say PPT 3 is "optional enrichment (not in the syllabus)". |
