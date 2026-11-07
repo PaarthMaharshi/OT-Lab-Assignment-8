@@ -2,7 +2,7 @@
 
 - **AI tool + model version:** Claude Code. Kernel patch and benchmark programs started with Claude Sonnet 5.5 (`claude-sonnet-5-5`); build, measurement, MLFQ fix and write-up with Claude Opus 5.5 (`claude-opus-5-5`), 2026-11-07.
 - **Prompt:** "just do everything else without asking me" / "do it quick please" (Track G from the assignment PDF).
-- **Output:** `xv6_scheduling.patch` (lottery + MLFQ schedulers, `settickets`, `setsched`, `getpinfo`, 10 ms tick, `schedbench`, `setpolicy`), `build.sh`, `bench.py`, `analyze.py`. Commit: [cf698c6](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/cf698c6).
+- **Output:** `xv6_scheduling.patch` (lottery + MLFQ schedulers, `settickets`, `setsched`, `getpinfo`, 10 ms tick, `schedbench`, `setpolicy`), `build.sh`, `bench.py`, `analyze.py`. Commit: [cf698c6](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/cf698c6).
 - **Verification:** xv6 `usertests -q` passes under round robin, lottery and MLFQ on the final kernel (`results/usertests_policy*.txt`); the benchmark programs exit cleanly under every policy; 27 measured runs (3 boots x 3 workloads x 3 policies).
 
 ## Environment work (not code, but necessary)

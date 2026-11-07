@@ -14,7 +14,7 @@
 None typed by me.
 
 ## 4. Resulting code change
-Commit: [aeac9ab](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/aeac9ab) (discrete DL choices added in [fe6685c](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/fe6685c)). Files: `tracks/B_discrete/**`.
+Commit: [aeac9ab](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/aeac9ab) (discrete DL choices added in [fe6685c](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/fe6685c)). Files: `tracks/B_discrete/**`.
 
 ## 5. Verification note
 - 13 tests: slide examples (feature-selection tables, knapsack B+D=6, QUBO min -4 at 0101/1010, Ising -5/2 constant, soft threshold, 955 fits), brute-force agreement for knapsack / Max-Cut / intervals, and QUBO-vs-Ising energy equality over all 2^n assignments.

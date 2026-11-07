@@ -14,7 +14,7 @@
 None typed by me.
 
 ## 4. Resulting code change
-Commit: [2528313](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/2528313). Files: `tracks/C_quantum_optimization/**`.
+Commit: [2528313](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/2528313). Files: `tracks/C_quantum_optimization/**`.
 
 ## 5. Verification note
 - 14 tests: Bell state, Hadamard interference, Born rule and 1/sqrt(shots), slide VQE (0.740, 1.077), slide QNN (0.825), slide QAOA optima (3.237, 3.856), 12-parameter VQE reaching -4, parameter-shift vs finite differences (including shared QAOA parameters), gate-level vs fast QAOA, density matrix vs statevector, depolarizing channel analytic values, PennyLane cross-check.

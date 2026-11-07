@@ -2,7 +2,7 @@
 
 - **AI tool + model version:** Claude Code. Code written with Claude Sonnet 5.5 (`claude-sonnet-5-5`); measurements and write-up finished with Claude Opus 5.5 (`claude-opus-5-5`), 2026-11-07.
 - **Prompt:** "just do everything else without asking me" / "do it quick please" (Track J from the assignment PDF)
-- **Output:** `collect.py`, `mutate.py`, `optimize.py`, `wallclock.py`, `select_plugin.py`. Commit: [eff5c67](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/eff5c67).
+- **Output:** `collect.py`, `mutate.py`, `optimize.py`, `wallclock.py`, `select_plugin.py`. Commit: [eff5c67](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/eff5c67).
 - **Verification:** every reduced suite is checked for 100% line coverage of the full suite; ILP solutions proven optimal; fault detection measured by mutation testing; wall-clock measured end to end (3 runs).
 
 ## Issues found (feed docs/failure_log.md)

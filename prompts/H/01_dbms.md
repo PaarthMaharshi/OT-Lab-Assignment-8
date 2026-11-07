@@ -2,7 +2,7 @@
 
 - **AI tool + model version:** Claude Code, Claude Sonnet 5.5 (`claude-sonnet-5-5`), 2026-11-07
 - **Prompt:** "just do everything else without asking me" / "do it quick please" (Track H from the assignment PDF)
-- **Output:** `hlib.py`, `experiments.py`, 5 tests. Commit: [5826744](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/5826744).
+- **Output:** `hlib.py`, `experiments.py`, 5 tests. Commit: [5826744](https://github.com/PaarthMaharshi/OT-Lab-Assignment-8/commit/5826744).
 - **Verification:** knapsack DP and the interaction ILP equal brute force; join-order DP equals brute force on the cost model; result sets of every plan and forced join order are identical to the baseline.
 
 ## Issues found (feed docs/failure_log.md)
