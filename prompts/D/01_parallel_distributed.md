@@ -2,7 +2,7 @@
 
 - **AI tool + model version:** Claude Code, Claude Sonnet 5.5 (`claude-sonnet-5-5`), 2026-11-06
 - **Prompt:** "Start Track D", then "just do everything else without asking me" and "do it quick please"
-- **Output:** `dlib.py`, `pwork.py`, `experiments.py`, 8 tests. Commit: see git log.
+- **Output:** `dlib.py`, `pwork.py`, `experiments.py`, 8 tests. Commit: [9cd60b6](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/9cd60b6) (supplement: [fe6685c](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/fe6685c)).
 - **Verification:** slide makespans 15/9/11, Amdahl 6.4, Gustafson 14.5, bubble 3/11, MGDA vs brute force, FedAvg one round equals a centralized step, multi-task gradients vs finite differences, greedy checked against the ILP optimum.
 
 ## Issues found (feed docs/failure_log.md)

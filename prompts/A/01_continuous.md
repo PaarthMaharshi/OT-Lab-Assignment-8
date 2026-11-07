@@ -14,7 +14,7 @@
 None typed by me; the AI revised its own code after reading results (section 6).
 
 ## 4. Resulting code change
-Commit: _see git log_. Files: `tracks/A_continuous/**`.
+Commit: [5cf0295](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/5cf0295). Files: `tracks/A_continuous/**`.
 
 ## 5. Verification note
 - 25 pytest tests. Expected values are taken from the lecture slides' worked examples (GD 0.6/1.08/1.464, momentum 4/2.3, NAG 4/2.48, Adam 2.9, AdaGrad 2/1.445, RMSProp 2.684, Newton 1.5), from finite-difference gradient/HVP checks, and from textbook convergence bounds.

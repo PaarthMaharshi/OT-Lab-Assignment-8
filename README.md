@@ -5,7 +5,7 @@ Main case study (Track E): **tower-defense placement optimization**.
 
 - **Technical report:** [REPORT.md](REPORT.md) (a section per track and answers to the 10 final questions)
 - **Chapter 6 coverage checklist:** [COVERAGE.md](COVERAGE.md) (60 topics, each mapped to code and a measured or tested result)
-- **AI failure log:** [docs/failure_log.md](docs/failure_log.md) (17 documented cases) - **prompt logs:** `prompts/<track>/`
+- **AI failure log:** [docs/failure_log.md](docs/failure_log.md) (18 documented cases) - **prompt logs:** `prompts/<track>/`
 
 ## Tracks
 

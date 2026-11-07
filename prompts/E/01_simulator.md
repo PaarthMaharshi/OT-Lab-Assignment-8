@@ -14,7 +14,7 @@ Generated `td/sim.py`, `maps.py`, `surrogate.py`, `baselines.py`, `viz.py`, test
 None needed; follow-ups were caused by AI mistakes (see section 6).
 
 ## 4. Resulting code change
-Commit: _not committed yet_. Files: `tracks/E_tower_defense/**`.
+Commit: [6ab8663](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/6ab8663). Files: `tracks/E_tower_defense/**`.
 
 ## 5. Verification note
 - 12 pytest tests pass. Expected values were computed by hand BEFORE running (tower in range for 3 ticks = 30 damage; kill at hp 20; slow-tower case = 5 shots = 50 damage).

@@ -1,6 +1,6 @@
 # AI Failure Log
 
-Cases where AI-generated code, tests, experiments or claims were wrong, misleading, unsafe or inefficient (the assignment requires at least 3). Every entry was found during this project and is also described in the relevant `prompts/<track>/` log. "Tool" is always Claude Code (Claude Sonnet 5.5) for the entries below.
+Cases where AI-generated code, tests, experiments or claims were wrong, misleading, unsafe or inefficient (the assignment requires at least 3; 18 are listed). Every entry was found during this project and is also described in the relevant `prompts/<track>/` log. "Tool" is always Claude Code (Claude Sonnet 5.5) for the entries below.
 
 | # | Track | What went wrong | How it was detected | Fix | Lesson |
 |---|---|---|---|---|---|
@@ -21,3 +21,4 @@ Cases where AI-generated code, tests, experiments or claims were wrong, misleadi
 | 15 | I | The 8-hidden-unit MLP baseline (0.64 on circles) would have made the quantum models look competitive | Comparison with the SVM | Added a stronger MLP (0.99) | A weak baseline manufactures an advantage |
 | 16 | J | A mutant created an infinite loop; the mutation runner crashed and discarded the run (no per-test timeout) | Traceback after about 10 minutes | Per-test timeout, whole-run timeout handled as "detected", unconditional restore of the mutated file | Anything that executes mutated code needs a timeout |
 | 17 | all | Several results files crashed on `numpy` types when writing JSON (A, C, E), and shell heredocs with long content failed (D, F) | Tracebacks | Conversion fallback; editor tool instead of heredoc | Cheap, but it cost real runs; write results incrementally |
+| 18 | G | The first MLFQ scheduler preempted only at slice expiry, so a CPU hog kept the CPU up to 4 ticks after an interactive process woke; the first benchmark also let round robin always run first after boot (JIT warm-up made it look about 60% worse) and self-calibrated its work unit (3.4-5.3 M iterations/tick between runs) | Measured wake-up delays; makespan of the first policy run far above the others | Yield when a higher-priority process is runnable; fixed work unit, discarded warm-up run, rotated policy order; usertests rerun on the fixed kernel | Emulated timing needs warm-up and order control; measure the behaviour the design claims |

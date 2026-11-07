@@ -2,7 +2,7 @@
 
 - **AI tool + model version:** Claude Code, Claude Sonnet 5.5 (`claude-sonnet-5-5`), 2026-11-06
 - **Prompt:** "do everything else without asking me" / "do it quick please" (Track F from the assignment PDF)
-- **Output:** `toyc.py`, `passes.py`, `programs.py`, `experiments.py`, 12 tests. Commit: see git log.
+- **Output:** `toyc.py`, `passes.py`, `programs.py`, `experiments.py`, 12 tests. Commit: [2c7a6ce](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/2c7a6ce).
 - **Verification:** VM output equals optimized output for every program, pass and random order; 150 fuzzed programs; division by zero not removed by DCE; exact ILP colouring never worse than greedy.
 
 ## Issues found (feed docs/failure_log.md)

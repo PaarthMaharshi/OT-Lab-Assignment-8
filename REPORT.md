@@ -1,6 +1,6 @@
 # Technical Report - Assignment 8: Optimize Anything
 
-Course: Optimization Techniques (R5CO3101T), Chapter 6. All ten tracks (A-J) are implemented, measured and tested. Each track folder has a README with full tables; `COVERAGE.md` maps every Chapter 6 topic (60 rows) to code and evidence; `docs/failure_log.md` lists 17 documented AI errors; `prompts/` holds the per-track prompt logs.
+Course: Optimization Techniques (R5CO3101T), Chapter 6. All ten tracks (A-J) are implemented, measured and tested. Each track folder has a README with full tables; `COVERAGE.md` maps every Chapter 6 topic (60 rows) to code and evidence; `docs/failure_log.md` lists 18 documented AI errors; `prompts/` holds the per-track prompt logs.
 
 **Environment.** Windows 11, 12 logical processors, Python 3.13 (numpy, scipy, scikit-learn, OR-Tools/SCIP, PennyLane for one cross-check), MSYS2 GCC (Track F, OpenMP), SQLite 3 (Track H), QEMU 11 + RISC-V GCC 16 (Track G). Every quantum result is **simulated** on a numpy simulator written for Track C; no real quantum hardware was used. Parallel timings are measured on this one machine.
 
@@ -50,7 +50,7 @@ networkx shortest-path tests (654 tests, 4,595 source lines). Weighted set cover
 
 **4. Optimised vs baseline.** E: random 1048-1884 -> annealing 2185-3309 mean damage; H: 1.53 s -> 0.13-0.20 s workload; J: 8.2 s -> 4.7 s; F: up to 1.51x; G: lottery proportional share error 0.168 -> 0.008; D: 4.25x parallel speedup.
 
-**5. Trade-offs, failures, limitations.** Surrogates mislead (E, H, J); more indexes can slow a database 11x (H); fewer instructions need not mean faster code (F); quantum methods lose on time and accuracy at these sizes (C, I); parallelism saturates at the physical cores and memory-bound work slows down (D); penalty weights must be sized to the objective (B, E). All 17 AI errors are in `docs/failure_log.md`.
+**5. Trade-offs, failures, limitations.** Surrogates mislead (E, H, J); more indexes can slow a database 11x (H); fewer instructions need not mean faster code (F); quantum methods lose on time and accuracy at these sizes (C, I); parallelism saturates at the physical cores and memory-bound work slows down (D); penalty weights must be sized to the objective (B, E). All 18 AI errors are in `docs/failure_log.md`.
 
 **6. Evidence of correctness and reproducibility.** 106 automated tests (slide worked examples, brute force, finite differences, PennyLane cross-check), plus xv6 `usertests` under every scheduler, identical query results for every plan, identical program output for every compiler pass, and mutation testing. Every experiment uses fixed seeds and writes JSON results; each README gives the command to reproduce it.
 
@@ -60,4 +60,4 @@ networkx shortest-path tests (654 tests, 4,595 source lines). Weighted set cover
 
 **9. Quantum and parallel limits.** Quantum: exponential or quadratic *query* separations are real (DJ, BV, Grover), but on simulators wall time is worse, QAOA trails classical annealing, QML loses to an SVM, noise and barren plateaus grow with size. Parallel: real, measured 3-4x speedups bounded by physical cores, overhead and memory bandwidth (Amdahl's serial fraction about 0.17 here).
 
-**10. AI tools.** Claude Code was used throughout (Claude Sonnet 5.5, then Claude Opus 5.5; see the register in README.md). Its outputs needed correction 17 times, from a wrong surrogate model and invented counts to unfair benchmarks, timing noise reported as speedups, and mis-sized penalties (all logged with the fix and lesson). A comparison with a second AI tool on one task is required by the assignment and must still be done by the student (`docs/tool_comparison.md`).
+**10. AI tools.** Claude Code was used throughout (Claude Sonnet 5.5, then Claude Opus 5.5; see the register in README.md). Its outputs needed correction 18 times, from a wrong surrogate model and invented counts to unfair benchmarks, timing noise reported as speedups, and mis-sized penalties (all logged with the fix and lesson). A comparison with a second AI tool on one task is required by the assignment and must still be done by the student (`docs/tool_comparison.md`).

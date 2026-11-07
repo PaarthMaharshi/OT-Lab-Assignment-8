@@ -11,7 +11,7 @@
 `td/qubo_tower.py`, `td/maps.spiral_map`, `run_qubo.py`, `parallel_eval.py`, two-map `compare.py`, `tests/test_extra.py`.
 
 ## 4. Resulting code change
-Commit: see git log.
+Commit: [89fec71](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/89fec71).
 
 ## 5. Verification note
 - QUBO energy equals a direct evaluation of the formula; with a large penalty the minimum has exactly k towers (test).

@@ -14,7 +14,7 @@
 None typed by me; the AI revised its own surrogate after reading the first results (section 6).
 
 ## 4. Resulting code change
-Commit: _not committed yet_. Files: `td/optim.py`, `td/surrogate.py`, `compare.py`, tests.
+Commit: [6ab8663](https://github.com/PaarthMaharshi/OT-Assignment-3/commit/6ab8663). Files: `td/optim.py`, `td/surrogate.py`, `compare.py`, tests.
 
 ## 5. Verification note
 - ILP checked against brute-force enumeration on a tiny instance (budgets 10/30/40): equal.
