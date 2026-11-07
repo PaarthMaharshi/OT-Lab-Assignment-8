@@ -5,6 +5,7 @@ Main case study (Track E): **tower-defense placement optimization**.
 
 - **Technical report:** [REPORT.md](REPORT.md) (a section per track and answers to the 10 final questions)
 - **Chapter 6 coverage checklist:** [COVERAGE.md](COVERAGE.md) (60 topics, each mapped to code and a measured or tested result)
+- **Demonstration script:** [DEMO.md](DEMO.md) - **viva study guide:** [VIVA_GUIDE.md](VIVA_GUIDE.md)
 - **AI failure log:** [docs/failure_log.md](docs/failure_log.md) (18 documented cases) - **prompt logs:** `prompts/<track>/`
 
 ## Tracks
@@ -49,9 +50,9 @@ Hardware: Windows 11, 12 logical processors (most likely 6 physical cores, judgi
 ## Still to do by the student (cannot be done by the AI on your behalf)
 
 1. **Tool comparison** (`docs/tool_comparison.md`): done for two Claude models (Opus 5.5 vs Haiku 5.5, both 60/60). Optionally add a different vendor's tool (ChatGPT, Gemini) with the steps in that file.
-2. **Chat exports / screenshots** into each `prompts/<track>/` folder (the logs have a placeholder).
-3. **Demonstration** (short video or live demo): suggested flow is Track E (`run_baseline.py` map, `results/comparison.png`), then one surprising result (Track H's 11x regression or Track J's slower-than-full suite).
-4. **Viva preparation**: read and be able to modify `tracks/E_tower_defense/td/sim.py`, `td/optim.py`, `tracks/A_continuous/optlib.py`, `tracks/F_compiler/passes.py` and the xv6 patch, without AI.
+2. **Chat export**: the full session was exported with the app's Export feature to your Downloads folder (`session-export-1794050221515.zip`); decide what to publish (it contains app metadata as well as the chat) and add it or screenshots to `prompts/`.
+3. **Demonstration** (short video or live demo): follow [DEMO.md](DEMO.md).
+4. **Viva preparation**: work through [VIVA_GUIDE.md](VIVA_GUIDE.md) without AI.
 5. **Publish**: create a public GitHub repository and push (`git remote add origin <url>`, `git push -u origin main`).
 6. Mark your own edits with commits prefixed `[manual]`.
 
